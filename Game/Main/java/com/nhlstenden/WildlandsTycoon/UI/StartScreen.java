@@ -17,9 +17,10 @@ public class StartScreen implements ActionListener {
     private JFrame mainFrame;
     private JPanel panel;
     private JButton doneButton;
+    private JButton appealButton;
 
     public static void main(String[] args) {
-        StartScreen startScreen = new StartScreen();
+        new StartScreen();
     }
 
     public StartScreen(){
@@ -37,26 +38,35 @@ public class StartScreen implements ActionListener {
         });
         panel = new JPanel();
 
-        doneButton = new JButton("Done");
+        doneButton = new JButton("Start zoo");
         doneButton.addActionListener(this);
+        appealButton = new JButton("Check appeal");
+        appealButton.addActionListener(this);
+        appealButton.setVisible(false);
         panel.add(doneButton);
+        panel.add(appealButton);
         mainFrame.add(panel);
         mainFrame.setVisible(true);
-        mainFrame.setVisible(true);
+
     }
 
 
 
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        if (command.equals("Done")){
+        if (command.equals("Start zoo")){
             System.out.println("Creating zoo");
             createNewZoo();
+            appealButton.setVisible(true);
+            //go to new window
             System.out.println("Created zoo");
+        } else if (command.equals("Check appeal")){
+            System.out.println(this.controller.getZoo().getAppeal());
         }
     }
 
     public void createNewZoo(){
+        //get this from ui
         String name = "";
         String location = "";
         Time openingTime = Time.valueOf("09:00:00");

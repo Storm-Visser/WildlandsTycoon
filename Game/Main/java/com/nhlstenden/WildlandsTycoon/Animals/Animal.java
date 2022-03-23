@@ -2,18 +2,20 @@ package com.nhlstenden.WildlandsTycoon.Animals;
 
 public class Animal {
 
+    private Double baseAppeal;
     private Double dailyHoursOfSleep;
     //Temperature in C°
     private Double maxTemperature;
-    private Double minTempreature;
+    private Double minTemperature;
 
     private Habitat habitat;
     private State state;
 
-    public Animal(Double dailyHoursOfSleep, Double maxTemperature, Double minTempreature, Habitat habitat, State state) {
+    public Animal(Double dailyHoursOfSleep, Double maxTemperature, Double minTemperature, Habitat habitat, State state) {
+        this.baseAppeal = 50.0;
         this.dailyHoursOfSleep = dailyHoursOfSleep;
         this.maxTemperature = maxTemperature;
-        this.minTempreature = minTempreature;
+        this.minTemperature = minTemperature;
         this.habitat = habitat;
         this.state = state;
     }
@@ -35,11 +37,11 @@ public class Animal {
     }
 
     public Double getMinTemperature() {
-        return minTempreature;
+        return minTemperature;
     }
 
     public void setMinTemperature(Double minTemperature) {
-        this.minTempreature = minTemperature;
+        this.minTemperature = minTemperature;
     }
 
     public Habitat getHabitat() {
@@ -58,17 +60,74 @@ public class Animal {
         this.state = state;
     }
 
-    public double GetAppeal() {
-        double appeal;
-        appeal = 0;
-        return  appeal;
+    public double getAppeal() {
+        double hunger = this.state.getHunger();
+        double tempContempment = this.state.getTemperatureContentment();
+        double stress = this.state.getStress();
+        Boolean isSleeping = this.state.isSleeping();
+        double multiplier = (100 - (hunger / 3) - (tempContempment / 3) - (stress / 3)) / 100;
+        if (multiplier > 0.0){
+            if(isSleeping){
+                if (multiplier > 0.2){
+                    return  baseAppeal * multiplier - baseAppeal * 0.2;
+                } else {
+                    return 0.0;
+                }
+            } else {
+                return baseAppeal * multiplier;
+            }
+        } else {
+            return 0.0;
+        }
     }
 
-    public void UpdateState() {
-
+    public void updateState(Double temperature, int amountOfGuests) {
+        //update temp confinement
+        if (temperature < minTemperature){
+            this.state.setTemperatureContentment(this.state.getTemperatureContentment() - (minTemperature - temperature * 5));
+        }
+        if (temperature > maxTemperature){
+            this.state.setTemperatureContentment(this.state.getTemperatureContentment() - (temperature - maxTemperature * 5));
+        }
+        //update stress
+        if (amountOfGuests > 1000) {
+            this.state.setStress(this.state.getStress() * ((amountOfGuests - 1000) / 1000));
+        }
+        //update hunger
+        this.state.setHunger(this.state.getHunger() + 5);
+        //update fatigue
+        if (this.state.isSleeping()) {
+            this.state.setFatigue(this.state.getFatigue() + 20);
+        } else {
+            this.state.setFatigue(this.state.getFatigue() - 20);
+        }
     }
 
-    public void Update() {
+    public void update(Double temperature, int AmountOfGuests) {
+        updateState(temperature, AmountOfGuests);
+        if (!this.state.isSleeping() && this.state.getFatigue() < 20){
+            this.sleep();
+        } else if (this.state.getFatigue() >= 100){
+            this.wakeUp();
+        }
+        if (this.state.getHunger() > 50 && !state.isSleeping()){
+            this.feed();
+        }
+    }
 
+    //changes in factory per animal
+    public void feed(){
+        this.state.setHunger(0);
+        System.out.println("Fed Animal X");
+    }
+
+    private void wakeUp(){
+        this.state.setSleeping(false);
+        System.out.println("Animal X woke up");
+    }
+
+    private void sleep(){
+        this.state.setSleeping(true);
+        System.out.println("Animal X fell asleep");
     }
 }

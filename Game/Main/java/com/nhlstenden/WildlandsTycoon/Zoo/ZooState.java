@@ -10,7 +10,7 @@ public class ZooState {
     private Time time;
 
     public ZooState() {
-        temperature = 0;
+        temperature = 20;
         time = Time.valueOf("00:00:00");
     }
 

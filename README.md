@@ -1,2 +1,2 @@
 # WildlandsTycoon
-Design patterns opdracht, zoo simulation game
+Design patterns opdracht, zoo simulation startScreen

@@ -1,27 +1,19 @@
-package com.nhlstenden.WildlandsTycoon.Animals;
+package com.nhlstenden.WildlandsTycoon.Animals.Species;
 
-@Deprecated
-//Weghalen zodra zeker is of de factory werkt en klopt!!!
-public class Animal {
+import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
+import com.nhlstenden.WildlandsTycoon.Animals.State;
 
-    private Double baseAppeal;
-    private Double dailyHoursOfSleep;
+public abstract class Animal {
+    protected Double baseAppeal;
+    protected Double dailyHoursOfSleep;
     //Temperature in C°
-    private Double maxTemperature;
-    private Double minTemperature;
+    protected Double maxTemperature;
+    protected Double minTemperature;
 
-    private Habitat habitat;
-    private State state;
+    protected Habitat habitat;
+    protected State state;
 
-    public Animal(Double dailyHoursOfSleep, Double maxTemperature, Double minTemperature, Habitat habitat, State state) {
-        this.baseAppeal = 50.0;
-        this.dailyHoursOfSleep = dailyHoursOfSleep;
-        this.maxTemperature = maxTemperature;
-        this.minTemperature = minTemperature;
-        this.habitat = habitat;
-        this.state = state;
-    }
-
+    //changes in factory per animal
     public Double getDailyHoursOfSleep() {
         return dailyHoursOfSleep;
     }
@@ -118,18 +110,10 @@ public class Animal {
     }
 
     //changes in factory per animal
-    public void feed(){
-        this.state.setHunger(0);
-        System.out.println("Fed Animal X");
-    }
+    public abstract void feed();
 
-    private void wakeUp(){
-        this.state.setSleeping(false);
-        System.out.println("Animal X woke up");
-    }
+    public abstract void wakeUp();
 
-    private void sleep(){
-        this.state.setSleeping(true);
-        System.out.println("Animal X fell asleep");
-    }
+    public abstract void sleep();
+
 }

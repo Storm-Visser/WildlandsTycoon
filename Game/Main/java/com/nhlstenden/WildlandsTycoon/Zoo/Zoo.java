@@ -1,8 +1,6 @@
 package com.nhlstenden.WildlandsTycoon.Zoo;
 
-import com.nhlstenden.WildlandsTycoon.Animals.Animal;
-import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
-import com.nhlstenden.WildlandsTycoon.Animals.State;
+import com.nhlstenden.WildlandsTycoon.Animals.AnimalFactory;
 
 import java.sql.Time;
 import java.util.ArrayList;
@@ -17,6 +15,7 @@ public class Zoo {
     private Grid grid;
     private ZooState zooState;
 
+
     public Zoo(String name, String locationName, Time openingTime, Time closingTime, Double ticketPrice, int width , int height) {
         this.name = name;
         this.locationName = locationName;
@@ -24,7 +23,7 @@ public class Zoo {
         this.entrance = new Entrance(openingTime, closingTime, ticketPrice);
         this.grid = new Grid(width, height);
         this.zooState = new ZooState();
-        this.addResidence(new Residence(1, new Animal(3.0, 30.0, 20.0, Habitat.AQUATIC, new State())));
+        this.addResidence(new Residence(1));
     }
 
     public String getName() {

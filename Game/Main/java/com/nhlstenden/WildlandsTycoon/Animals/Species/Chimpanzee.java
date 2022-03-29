@@ -19,18 +19,18 @@ public class Chimpanzee extends Animal{
     @Override
     public void feed() {
         this.state.setHunger(0);
-        System.out.println("Fed Flamingo");
+        System.out.println("Fed Chimpanzee");
     }
 
     @Override
     public void wakeUp() {
         this.state.setSleeping(false);
-        System.out.println("Flamingo woke up");
+        System.out.println("Chimpanzee woke up");
     }
 
     @Override
     public void sleep() {
         this.state.setSleeping(true);
-        System.out.println("Flamingo fell asleep");
+        System.out.println("Chimpanzee fell asleep");
     }
 }

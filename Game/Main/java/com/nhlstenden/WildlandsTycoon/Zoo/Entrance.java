@@ -6,7 +6,7 @@ public class Entrance {
 
     private Time openingTime;
     private Time closingTime;
-    private Double ticketPrice;
+    private double ticketPrice;
     private int amountOfGuests;
     private int totalGuestsToday;
 
@@ -34,11 +34,11 @@ public class Entrance {
         this.closingTime = closingTime;
     }
 
-    public Double getTicketPrice() {
+    public double getTicketPrice() {
         return ticketPrice;
     }
 
-    public void setTicketPrice(Double ticketPrice) {
+    public void setTicketPrice(double ticketPrice) {
         this.ticketPrice = ticketPrice;
     }
 

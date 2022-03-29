@@ -4,48 +4,51 @@ import com.nhlstenden.WildlandsTycoon.Controller.Controller;
 import com.nhlstenden.WildlandsTycoon.Zoo.Zoo;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Time;
 
-public class StartScreen implements ActionListener {
+public class StartScreenUI implements ActionListener {
 
     private Controller controller;
 
     private JFrame mainFrame;
-    private JPanel panel;
-    private JButton doneButton;
-    private JButton appealButton;
+
+    private JTextField textField;
+
+    private GridLayout gridLayout;
 
     public static void main(String[] args) {
-        new StartScreen();
+        new StartScreenUI();
     }
 
-    public StartScreen(){
+    public StartScreenUI(){
         createGUI();
     }
 
     private void createGUI(){
         mainFrame = new JFrame("Create Zoo");
-        mainFrame.setSize(1000,1000);
-        // GridLayout voor de layout
+        mainFrame.setSize(300,150);
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent){
                 System.exit(0);
             }
         });
-        panel = new JPanel();
+        this.gridLayout = new GridLayout(3, 1);
+        mainFrame.setLayout(this.gridLayout);
 
-        doneButton = new JButton("Start zoo");
+        mainFrame.add(new JLabel("Enter zoo name:"));
+
+        this.textField = new JTextField();
+        mainFrame.add(this.textField);
+
+        JButton doneButton = new JButton("Start zoo");
         doneButton.addActionListener(this);
-        appealButton = new JButton("Check appeal");
-        appealButton.addActionListener(this);
-        appealButton.setVisible(false);
-        panel.add(doneButton);
-        panel.add(appealButton);
-        mainFrame.add(panel);
+        mainFrame.add(doneButton);
+
         mainFrame.setVisible(true);
 
     }
@@ -56,24 +59,23 @@ public class StartScreen implements ActionListener {
         String command = e.getActionCommand();
         if (command.equals("Start zoo")){
             System.out.println("Creating zoo");
-            createNewZoo();
-            appealButton.setVisible(true);
-            //go to new window
-            System.out.println("Created zoo");
-        } else if (command.equals("Check appeal")){
-            System.out.println(this.controller.getZoo().getAppeal());
+            String selected = textField.getText();
+            createNewZoo(selected);
+            new GameUI(controller);
+            mainFrame.setVisible(false);
         }
     }
 
-    public void createNewZoo(){
+    public void createNewZoo(String selectedName){
         //get this from ui
-        String name = "";
-        String location = "";
+        String name = selectedName;
+        String location = "Emmen";
         Time openingTime = Time.valueOf("09:00:00");
         Time closingTime = Time.valueOf("18:00:00");
         Double price = 5.0;
         int width = 5;
         int height = 5;
+
         Zoo zoo = new Zoo(name, location, openingTime, closingTime, price, width, height);
         this.controller = new Controller(zoo);
         this.controller.initialize();

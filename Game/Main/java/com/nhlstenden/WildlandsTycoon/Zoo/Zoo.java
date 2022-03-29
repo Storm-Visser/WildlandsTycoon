@@ -1,7 +1,5 @@
 package com.nhlstenden.WildlandsTycoon.Zoo;
 
-import com.nhlstenden.WildlandsTycoon.Animals.AnimalFactory;
-
 import java.sql.Time;
 import java.util.ArrayList;
 
@@ -9,6 +7,7 @@ public class Zoo {
 
     private String name;
     private String locationName;
+    private int money;
     private ArrayList<Residence> residences;
 
     private Entrance entrance;
@@ -19,11 +18,18 @@ public class Zoo {
     public Zoo(String name, String locationName, Time openingTime, Time closingTime, Double ticketPrice, int width , int height) {
         this.name = name;
         this.locationName = locationName;
+        this.money = 5000;
         this.residences = new ArrayList<>();
         this.entrance = new Entrance(openingTime, closingTime, ticketPrice);
         this.grid = new Grid(width, height);
         this.zooState = new ZooState();
-        this.addResidence(new Residence(1));
+        this.createResidences();
+    }
+
+    private void createResidences(){
+        for (int i = 0; i < this.grid.getWidth() * this.grid.getHeight(); i++){
+            this.addResidence(new Residence(i + 1));
+        }
     }
 
     public String getName() {
@@ -66,8 +72,29 @@ public class Zoo {
         this.zooState = zooState;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public void addResidence(Residence residence){
         this.residences.add(residence);
+    }
+
+    public Residence getResidence(int id){
+        Residence result = null;
+        for (Residence residence: this.residences) {
+            if (residence.getID() == id){
+                result = residence;
+            }
+        }
+        if (result == null){
+            System.out.println("no residence with id " + id);
+        }
+        return result;
     }
 
     public double getAppeal() {
@@ -82,6 +109,7 @@ public class Zoo {
         updateState();
         notifyAnimals();
     }
+
     public void updateState(){
         this.zooState.update();
     }

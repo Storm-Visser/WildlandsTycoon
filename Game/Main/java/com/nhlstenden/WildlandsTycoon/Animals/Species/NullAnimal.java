@@ -13,7 +13,16 @@ public class NullAnimal extends Animal{
         this.minTemperature = 0.0;
 
         this.habitat = null;
-        this.state = null;
+        this.state = new State();
+    }
+    @Override
+    public double getAppeal() {
+        return 0.0;
+    }
+
+    @Override
+    public void update(Double temperature, int AmountOfGuests) {
+
     }
 
     @Override

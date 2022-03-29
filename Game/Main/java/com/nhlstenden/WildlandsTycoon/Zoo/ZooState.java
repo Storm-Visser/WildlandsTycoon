@@ -1,17 +1,17 @@
 package com.nhlstenden.WildlandsTycoon.Zoo;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 public class ZooState {
 
     //Temperature in C°
     private double temperature;
 
-    private Time time;
+    private LocalTime time;
 
     public ZooState() {
         temperature = 20;
-        time = Time.valueOf("00:00:00");
+        time = LocalTime.of(23,30);
     }
 
     public double getTemperature() {
@@ -22,15 +22,20 @@ public class ZooState {
         this.temperature = temperature;
     }
 
-    public Time getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void update(){
+        updateTime();
+        updateTemperature();
     }
 
-    public void update(){
+    private void updateTime(){
+        this.time = this.time.plusMinutes(10);
+    }
 
+    public void updateTemperature(){
+        //ToDo some algorithm to control temp according to time
     }
 }

@@ -34,6 +34,7 @@ public class Residence {
 
     public void addAnimal(String animalSpecies){
         if (this.animal.getClass().equals(NullAnimal.class)){
+            System.out.println(animalSpecies);
             switch (animalSpecies) {
                 case "Chimpanzee":
                     this.animal = animalFactory.createChimpanzee();
@@ -59,10 +60,10 @@ public class Residence {
                 case "Penguin":
                     this.animal = animalFactory.createPenguin();
                     break;
-                case "RingTailedLemur":
+                case "Ring tailed Lemur":
                     this.animal = animalFactory.createRingTailedLemur();
                     break;
-                case "SnowLeopard":
+                case "Snow Leopard":
                     this.animal = animalFactory.createSnowLeopard();
                     break;
                 case "Tiger":

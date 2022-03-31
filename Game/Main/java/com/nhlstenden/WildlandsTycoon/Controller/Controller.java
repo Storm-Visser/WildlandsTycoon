@@ -36,7 +36,7 @@ public class Controller {
         zoo.update();
         if (zoo.getZooState().getTime().equals(LocalTime.of(0,0))){
             System.out.println("Day passed");
-            //means the day passed, do the memento things
+            //ToDo means the day passed, do the memento things
         }
         this.gameUI.updateUI();
     }

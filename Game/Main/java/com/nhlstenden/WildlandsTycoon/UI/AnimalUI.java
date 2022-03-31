@@ -89,6 +89,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command == "Add"){
+            //ToDo fix dat het ook met spaties werkt
             String selected = (String) comboBox.getItemAt(comboBox.getSelectedIndex());
             this.controller.getZoo().getResidence(recidenceId).addAnimal(selected);
             parentGameUI.updateUI();

@@ -109,6 +109,7 @@ public class GameUI extends JFrame implements ActionListener {
     }
 
     private void createAnimalUI(Animal animal, int id){
+        //ToDo Foto/graphics voor de animals
         new AnimalUI(this.controller, animal, id, this);
     }
 
@@ -123,6 +124,8 @@ public class GameUI extends JFrame implements ActionListener {
     }
 
     public void updateUI(){
+        //ToDo change color according to appeal
+        //ToDo update AnimalUI
         for (int i = 1; i <= residenceButtons.size(); i++) {
             ResidenceButton residenceButton = residenceButtons.get(i - 1);
             residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getClass().getSimpleName());

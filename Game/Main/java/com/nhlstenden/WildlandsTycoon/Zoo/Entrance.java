@@ -57,4 +57,7 @@ public class Entrance {
     public void setTotalGuestsToday(int totalGuestsToday) {
         this.totalGuestsToday = totalGuestsToday;
     }
+
+    //ToDo method voor toevoegen van gasten A.D.H.V appeal en prijs
+    //ToDo update met de prijs/money
 }

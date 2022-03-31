@@ -1,6 +1,7 @@
 package com.nhlstenden.WildlandsTycoon.UI;
 
 import com.nhlstenden.WildlandsTycoon.Animals.Species.Animal;
+import com.nhlstenden.WildlandsTycoon.Animals.Species.NullAnimal;
 import com.nhlstenden.WildlandsTycoon.Controller.Controller;
 
 import javax.swing.*;
@@ -29,6 +30,8 @@ public class GameUI extends JFrame implements ActionListener {
 
     private GridLayout gridLayout;
 
+    private AnimalUI activeAnimalUI;
+
 
 
     public GameUI(Controller controller){
@@ -36,7 +39,12 @@ public class GameUI extends JFrame implements ActionListener {
         this.controller = controller;
         controller.setGameUI(this);
         this.residenceButtons = new ArrayList<>();
+        this.activeAnimalUI = null;
         initialize();
+    }
+
+    public void removeActiveAnimalUI(){
+        this.activeAnimalUI = null;
     }
 
     public Controller getController() {
@@ -110,7 +118,7 @@ public class GameUI extends JFrame implements ActionListener {
 
     private void createAnimalUI(Animal animal, int id){
         //ToDo Foto/graphics voor de animals
-        new AnimalUI(this.controller, animal, id, this);
+        this.activeAnimalUI = new AnimalUI(this.controller, animal, id, this);
     }
 
     private void addResidences(){
@@ -124,14 +132,30 @@ public class GameUI extends JFrame implements ActionListener {
     }
 
     public void updateUI(){
-        //ToDo change color according to appeal
-        //ToDo update AnimalUI
         for (int i = 1; i <= residenceButtons.size(); i++) {
             ResidenceButton residenceButton = residenceButtons.get(i - 1);
             residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getClass().getSimpleName());
             residenceButton.setAnimal(controller.getZoo().getResidence(i).getAnimal());
         }
-        this.money.setText("€" + String.valueOf(this.controller.getZoo().getMoney()) + ",-");
+        this.money.setText("€" + this.controller.getZoo().getMoney() + ",-");
         this.time.setText(this.controller.getZoo().getZooState().getTime().toString());
+        if (this.activeAnimalUI != null){
+            this.activeAnimalUI.update();
+        }
+        changeColours();
+    }
+
+    private void changeColours(){
+        for (int i = 1; i <= residenceButtons.size(); i++) {
+            if (!controller.getZoo().getResidence(i).getAnimal().getClass().equals(NullAnimal.class)) {
+                ResidenceButton residenceButton = residenceButtons.get(i - 1);
+                double maxAppeal = residenceButton.getAnimal().getBaseAppeal();
+                double currentAppeal = residenceButton.getAnimal().getAppeal();
+                double percentageAppeal = currentAppeal / maxAppeal;
+                float redValue = (float) (1 - percentageAppeal);
+                float greenValue = (float) percentageAppeal;
+                residenceButton.setBackground(new Color(redValue, greenValue, 0));
+            }
+        }
     }
 }

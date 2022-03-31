@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class AnimalUI  extends JFrame implements ActionListener {
 
@@ -23,6 +25,15 @@ public class AnimalUI  extends JFrame implements ActionListener {
 
     private GameUI parentGameUI;
 
+    private boolean isRealAnimal;
+
+    private JLabel appealValue;
+    private JLabel sleepingValue;
+    private JLabel stressValue;
+    private JLabel fatigueValue;
+    private JLabel hungerValue;
+    private JLabel tempContentmentValue;
+
     public AnimalUI(Controller controller, Animal animal, int id, GameUI gameUI) throws HeadlessException {
         super(animal.getClass().getSimpleName());
         this.controller = controller;
@@ -34,10 +45,18 @@ public class AnimalUI  extends JFrame implements ActionListener {
 
     private void initialize(){
         if (this.animal.getClass().equals(NullAnimal.class)) {
+            this.isRealAnimal = false;
             initializeNullAnimal();
         } else {
+            this.isRealAnimal = true;
             this.setSize(300, 400);
-            this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            this.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent event) {
+                    closingProcedure();
+                }
+            });
             this.gridLayout = new GridLayout(8, 2);
             this.setLayout(this.gridLayout);
 
@@ -45,34 +64,53 @@ public class AnimalUI  extends JFrame implements ActionListener {
             this.add(new JLabel(animal.getClass().getSimpleName()));
 
             this.add(new JLabel("Appeal:"));
-            this.add(new JLabel(String.valueOf(animal.getAppeal())));
+            this.appealValue = new JLabel(String.valueOf(animal.getAppeal()));
+            this.add(this.appealValue);
 
             this.add(new JLabel("Is Sleeping?:"));
             if (animal.getState().isSleeping()){
-                this.add(new JLabel("Yes, Zzz"));
+                this.sleepingValue = new JLabel("Yes, Zzz");
             } else {
-                this.add(new JLabel("No"));
+                this.sleepingValue = new JLabel("No");
             }
+            this.add(this.sleepingValue);
 
             this.add(new JLabel("Stress:"));
-            this.add(new JLabel(String.valueOf(animal.getState().getStress())));
+            this.stressValue = new JLabel(String.valueOf(animal.getState().getStress()));
+            this.add(this.stressValue);
 
             this.add(new JLabel("Fatigue:"));
-            this.add(new JLabel(String.valueOf(animal.getState().getFatigue())));
+            this.fatigueValue = new JLabel(String.valueOf(animal.getState().getFatigue()));
+            this.add(this.fatigueValue);
 
             this.add(new JLabel("Hunger:"));
-            this.add(new JLabel(String.valueOf(animal.getState().getHunger())));
+            this.hungerValue = new JLabel(String.valueOf(animal.getState().getHunger()));
+            this.add(this.hungerValue);
 
             this.add(new JLabel("Temp Contentment:"));
-            this.add(new JLabel(String.valueOf(animal.getState().getTemperatureContentment())));
+            this.tempContentmentValue = new JLabel(String.valueOf(animal.getState().getTemperatureContentment()));
+            this.add(this.tempContentmentValue);
 
             this.setVisible(true);
         }
     }
 
+    private void closingProcedure(){
+        this.parentGameUI.removeActiveAnimalUI();
+        System.out.println("closing animalUI");
+        this.dispose();
+    }
+
+
     private void initializeNullAnimal(){
         this.setSize(300, 200);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                closingProcedure();
+            }
+        });
         this.gridLayout = new GridLayout(2, 1);
         this.setLayout(this.gridLayout);
         this.add(new JLabel("No animal yet!!"));
@@ -92,6 +130,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
             String selected = (String) comboBox.getItemAt(comboBox.getSelectedIndex());
             this.controller.getZoo().getResidence(recidenceId).addAnimal(selected);
             parentGameUI.updateUI();
+            closingProcedure();
             this.dispose();
         }
     }
@@ -101,5 +140,21 @@ public class AnimalUI  extends JFrame implements ActionListener {
         JComboBox<String> comboBox = new JComboBox<>(options);
         //style if necessary
         return comboBox;
+    }
+
+    public void update()
+    {
+        if (this.isRealAnimal) {
+            this.appealValue.setText(String.valueOf(animal.getAppeal()));
+            if (animal.getState().isSleeping()){
+                this.sleepingValue.setText("Yes, Zzz");
+            } else {
+                this.sleepingValue.setText("No");
+            }
+            this.stressValue.setText(String.valueOf(animal.getState().getStress()));
+            this.fatigueValue.setText(String.valueOf(animal.getState().getFatigue()));
+            this.hungerValue.setText(String.valueOf(animal.getState().getHunger()));
+            this.tempContentmentValue.setText(String.valueOf(animal.getState().getTemperatureContentment()));
+        }
     }
 }

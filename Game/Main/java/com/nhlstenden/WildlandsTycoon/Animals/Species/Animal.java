@@ -55,6 +55,10 @@ public abstract class Animal {
         this.state = state;
     }
 
+    public Double getBaseAppeal() {
+        return baseAppeal;
+    }
+
     public double getAppeal() {
         double hunger = this.state.getHunger();
         double tempContempment = this.state.getTemperatureContentment();
@@ -95,18 +99,18 @@ public abstract class Animal {
         this.state.setHunger(this.state.getHunger() + 5);
         //update fatigue
         if (this.state.isSleeping()) {
-            this.state.setFatigue(this.state.getFatigue() + 20);
+            this.state.setFatigue(this.state.getFatigue() - 10);
         } else {
-            this.state.setFatigue(this.state.getFatigue() - 20);
+            this.state.setFatigue(this.state.getFatigue() + 10);
         }
     }
 
     public void update(Double temperature, int AmountOfGuests) {
         updateState(temperature, AmountOfGuests);
-        if (!this.state.isSleeping() && this.state.getFatigue() < 20){
-            this.sleep();
-        } else if (this.state.getFatigue() >= 100){
+        if (this.state.isSleeping() && this.state.getFatigue() <= 0){
             this.wakeUp();
+        } else if (this.state.getFatigue() >= 100){
+            this.sleep();
         }
         //ToDo niet automatisch eten geven
         if (this.state.getHunger() > 50 && !state.isSleeping()){

@@ -3,12 +3,15 @@ package com.nhlstenden.WildlandsTycoon.UI;
 import com.nhlstenden.WildlandsTycoon.Controller.Controller;
 import com.nhlstenden.WildlandsTycoon.Zoo.Zoo;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Time;
 import java.time.LocalTime;
 
@@ -22,36 +25,49 @@ public class StartScreenUI implements ActionListener {
 
     private GridLayout gridLayout;
 
+
     public static void main(String[] args) {
         new StartScreenUI();
     }
 
     public StartScreenUI(){
+
+        Splash();
         createGUI();
     }
 
+
+    public void Splash()
+    {
+        SplashScreenUI splash = new SplashScreenUI();
+    }
     private void createGUI(){
         mainFrame = new JFrame("Create Zoo");
-        mainFrame.setSize(300,150);
+        mainFrame.setSize(800,600);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.getContentPane().setBackground(Color.GRAY);
         mainFrame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent){
                 System.exit(0);
             }
         });
-        this.gridLayout = new GridLayout(3, 1);
-        mainFrame.setLayout(this.gridLayout);
+        mainFrame.setLayout(null);
 
-        mainFrame.add(new JLabel("Enter zoo name:"));
+        JLabel label = new JLabel("Enter zoo name:");
+        label.setBounds(200,60,600,200);
+        label.setFont(new Font("Calibri", Font.BOLD, 60));
+        mainFrame.add(label);
 
         this.textField = new JTextField();
-        mainFrame.add(this.textField);
-
+        textField.setBounds(250,250,300,40);
+        mainFrame.add(textField, BorderLayout.CENTER);
         JButton doneButton = new JButton("Start zoo");
         doneButton.addActionListener(this);
+        doneButton.setBounds(250, 300, 300, 40);
         mainFrame.add(doneButton);
+        
 
         mainFrame.setVisible(true);
-
     }
 
 

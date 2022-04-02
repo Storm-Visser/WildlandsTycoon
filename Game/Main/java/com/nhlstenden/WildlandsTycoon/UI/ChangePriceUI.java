@@ -23,6 +23,7 @@ public class ChangePriceUI extends JFrame implements ActionListener{
 
     private void initialize(){
         this.setSize(120, 200);
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.gridLayout = new GridLayout(5, 1);
         this.setLayout(this.gridLayout);

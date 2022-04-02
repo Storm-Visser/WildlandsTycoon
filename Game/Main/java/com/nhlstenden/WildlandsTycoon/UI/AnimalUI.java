@@ -53,6 +53,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
         } else {
             this.isRealAnimal = true;
             this.setSize(300, 400);
+            this.setLocationRelativeTo(null);
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             this.addWindowListener(new WindowAdapter() {
                 @Override
@@ -113,6 +114,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
 
     private void initializeNullAnimal(){
         this.setSize(300, 200);
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
             @Override

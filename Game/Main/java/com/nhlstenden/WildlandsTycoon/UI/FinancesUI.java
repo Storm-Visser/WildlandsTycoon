@@ -21,6 +21,7 @@ public class FinancesUI  extends JFrame implements ActionListener {
 
     private void initialize(){
         this.setSize(400, 200);
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //show the memento's
         this.setVisible(true);

@@ -54,6 +54,7 @@ public class GameUI extends JFrame implements ActionListener {
 
     private void initialize(){
         this.setSize(1000, 1000);
+        this.setLocationRelativeTo(null);
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent windowEvent){
                 System.exit(0);

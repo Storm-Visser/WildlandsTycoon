@@ -60,7 +60,8 @@ public class AnimalUI  extends JFrame implements ActionListener {
                     closingProcedure();
                 }
             });
-            this.gridLayout = new GridLayout(8, 2);
+
+            this.gridLayout = new GridLayout(7, 2);
             this.setLayout(this.gridLayout);
 
             this.add(new JLabel("Animal:"));
@@ -98,6 +99,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
             feedBtn.addActionListener(this);
             this.add(feedBtn);
 
+            this.createBorder();
             this.setVisible(true);
         }
     }
@@ -118,10 +120,10 @@ public class AnimalUI  extends JFrame implements ActionListener {
                 closingProcedure();
             }
         });
-        this.gridLayout = new GridLayout(2, 1);
+        this.gridLayout = new GridLayout(4, 1);
         this.setLayout(this.gridLayout);
         this.add(new JLabel("No animal yet!!"));
-        this.add(new JLabel("Select animal to add"));
+        this.add(new JLabel("Select animal to add:"));
         this.comboBox = createComboBox();
         this.add(comboBox);
         JButton addButton = new JButton("Add");
@@ -136,6 +138,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
         if (command == "Add"){
             AnimalSpecies selected = (AnimalSpecies) comboBox.getItemAt(comboBox.getSelectedIndex());
             this.controller.getZoo().getResidence(recidenceId).addAnimal(selected);
+            this.controller.getZoo().getEntrance().removeMoney(selected.getPrice());
             parentGameUI.updateUI();
             closingProcedure();
             this.dispose();
@@ -144,6 +147,32 @@ public class AnimalUI  extends JFrame implements ActionListener {
             this.animal.feed();
         }
     }
+
+    private void createBorder(){
+        Color color;
+        switch (this.animal.getHabitat()){
+            case JUNGLE:
+                color = Color.green;
+                break;
+            case AQUATIC:
+                color = Color.blue;
+                break;
+            case ARCTIC:
+                color = Color.lightGray;
+                break;
+            case SAVANNA:
+                color = Color.orange;
+                break;
+            case MOUNTAIN:
+                color = Color.darkGray;
+                break;
+            default:
+                color = Color.red;
+        }
+
+        this.getRootPane().setBorder(BorderFactory.createMatteBorder(10,10,10,10, color));
+    }
+
 
     private JComboBox<AnimalSpecies> createComboBox(){
         AnimalSpecies[] options = {AnimalSpecies.CHIMPANZEE, AnimalSpecies.CROCODILE, AnimalSpecies.FLAMINGO, AnimalSpecies.GORILLA, AnimalSpecies.HIPPO, AnimalSpecies.LION,

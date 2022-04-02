@@ -1,13 +1,15 @@
 package com.nhlstenden.WildlandsTycoon.Zoo;
 
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.AnimalSpecies;
+
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Zoo {
 
     private String name;
     private String locationName;
-    private int money;
     private ArrayList<Residence> residences;
 
     private Entrance entrance;
@@ -15,10 +17,9 @@ public class Zoo {
     private ZooState zooState;
 
 
-    public Zoo(String name, String locationName, Time openingTime, Time closingTime, Double ticketPrice, int width , int height) {
+    public Zoo(String name, String locationName, LocalTime openingTime, LocalTime closingTime, Double ticketPrice, int width , int height) {
         this.name = name;
         this.locationName = locationName;
-        this.money = 5000;
         this.residences = new ArrayList<>();
         this.entrance = new Entrance(openingTime, closingTime, ticketPrice);
         this.grid = new Grid(width, height);
@@ -72,14 +73,6 @@ public class Zoo {
         this.zooState = zooState;
     }
 
-    public int getMoney() {
-        return money;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
     public void addResidence(Residence residence){
         this.residences.add(residence);
     }
@@ -108,6 +101,7 @@ public class Zoo {
     public void update(){
         updateState();
         notifyAnimals();
+        this.entrance.update(this);
     }
 
     public void updateState(){
@@ -117,6 +111,14 @@ public class Zoo {
     public void notifyAnimals(){
         for (Residence residence : this.residences) {
             residence.getAnimal().update(zooState.getTemperature(), entrance.getAmountOfGuests());
+        }
+    }
+
+    private void payBaseCosts(){
+        for (Residence recidence: this.residences) {
+            if (!recidence.getAnimal().getSpecies().equals(AnimalSpecies.NULL_ANIMAL)){
+                this.entrance.removeMoney(5);
+            }
         }
     }
 }

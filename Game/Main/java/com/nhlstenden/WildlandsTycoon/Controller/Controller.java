@@ -46,10 +46,14 @@ public class Controller {
             System.out.println(getMementoList().get(getMementoList().size() - 1).getMemento()); // TODO Put in list instead of console line
         }
         this.gameUI.updateUI();
+        if (this.zoo.getEntrance().getMoney() < 0){
+            this.gameUI.gameOver();
+            this.timer.cancel();
+        }
     }
 
     public void takeSnapshot(){
-        caretaker.addMemento(new ZooMemento(zoo.getMoney(), zoo.getZooState().getTime()));
+        caretaker.addMemento(new ZooMemento(zoo.getEntrance().getMoney(), zoo.getZooState().getTime()));
     }
 
     public ArrayList<ZooMemento> getMementoList(){

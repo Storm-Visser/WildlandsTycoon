@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Time;
+import java.time.LocalTime;
 
 public class StartScreenUI implements ActionListener {
 
@@ -70,8 +71,8 @@ public class StartScreenUI implements ActionListener {
         //get this from ui
         String name = selectedName;
         String location = "Emmen";
-        Time openingTime = Time.valueOf("09:00:00");
-        Time closingTime = Time.valueOf("18:00:00");
+        LocalTime openingTime = LocalTime.of(6,0);
+        LocalTime closingTime = LocalTime.of(20,0);
         Double price = 5.0;
         int width = 5;
         int height = 5;

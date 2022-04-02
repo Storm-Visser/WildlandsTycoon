@@ -3,6 +3,7 @@ package com.nhlstenden.WildlandsTycoon.UI;
 import com.nhlstenden.WildlandsTycoon.Animals.Species.Animal;
 import com.nhlstenden.WildlandsTycoon.Animals.Species.NullAnimal;
 import com.nhlstenden.WildlandsTycoon.Controller.Controller;
+import com.nhlstenden.WildlandsTycoon.Zoo.Residence;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,6 +30,8 @@ public class GameUI extends JFrame implements ActionListener {
 
     private ArrayList<ResidenceButton> residenceButtons;
 
+    private ArrayList<ResidenceBody> residencesbodys;
+
     private GridLayout gridLayout;
 
     private AnimalUI activeAnimalUI;
@@ -40,6 +43,7 @@ public class GameUI extends JFrame implements ActionListener {
         this.controller = controller;
         controller.setGameUI(this);
         this.residenceButtons = new ArrayList<>();
+        this.residencesbodys = new ArrayList<>();
         this.activeAnimalUI = null;
         initialize();
     }
@@ -63,6 +67,7 @@ public class GameUI extends JFrame implements ActionListener {
         this.setJMenuBar(this.createMenu());
         this.gridLayout = new GridLayout(controller.getZoo().getGrid().getHeight(), controller.getZoo().getGrid().getWidth());
         this.setLayout(this.gridLayout);
+        this.addResidencesBodys();
         this.addResidences();
         this.setVisible(true);
     }
@@ -126,13 +131,25 @@ public class GameUI extends JFrame implements ActionListener {
         this.activeAnimalUI = new AnimalUI(this.controller, animal, id, this);
     }
 
+    private void addResidencesBodys()
+    {
+        for (int i = 1; i <= controller.getZoo().getGrid().getWidth() * controller.getZoo().getGrid().getHeight(); i++) {
+            ResidenceBody residenceBody = new ResidenceBody(i);
+            residenceBody.setBorder(BorderFactory.createMatteBorder(10,10,10,10, Color.GRAY));
+            this.residencesbodys.add(residenceBody);
+            residenceBody.setLayout(null);
+            this.add(residenceBody);
+        }
+    }
     private void addResidences(){
-        for (int i = 1; i <= controller.getZoo().getGrid().getWidth() * controller.getZoo().getGrid().getHeight(); i++){
+        for (int i = 1; i <= residencesbodys.size(); i++){
+           ResidenceBody residence = residencesbodys.get(i - 1);
             ResidenceButton residenceButton = new ResidenceButton(i, controller.getZoo().getResidence(i).getAnimal());
             residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getSpecies().getName());
+            residenceButton.setBounds(40, 60, 120, 60);
             residenceButton.addActionListener(this);
             this.residenceButtons.add(residenceButton);
-            this.add(residenceButton);
+            residence.add(residenceButton);
         }
     }
 
@@ -149,10 +166,11 @@ public class GameUI extends JFrame implements ActionListener {
         if (this.activeAnimalUI != null){
             this.activeAnimalUI.update();
         }
-        changeColours();
+        changeColoursAnimal();
+        changeColoursResidence();
     }
 
-    private void changeColours(){
+    private void changeColoursAnimal(){
         for (int i = 1; i <= residenceButtons.size(); i++) {
             if (!controller.getZoo().getResidence(i).getAnimal().getClass().equals(NullAnimal.class)) {
                 ResidenceButton residenceButton = residenceButtons.get(i - 1);
@@ -162,6 +180,36 @@ public class GameUI extends JFrame implements ActionListener {
                 float redValue = (float) (1 - percentageAppeal);
                 float greenValue = (float) percentageAppeal;
                 residenceButton.setBackground(new Color(redValue, greenValue, 0));
+            }
+        }
+    }
+
+    private void changeColoursResidence() {
+        for (int i = 1; i <= residenceButtons.size(); i++) {
+            if (!controller.getZoo().getResidence(i).getAnimal().getClass().equals(NullAnimal.class)) {
+                ResidenceButton residenceButton = residenceButtons.get(i - 1);
+                ResidenceBody residence = residencesbodys.get(i - 1);
+                Color color;
+                switch (residenceButton.getAnimal().getHabitat()) {
+                    case JUNGLE:
+                        color = new Color(51, 102, 0);
+                        break;
+                    case AQUATIC:
+                        color = new Color(0, 153, 153);
+                        break;
+                    case ARCTIC:
+                        color = new Color(0, 204, 204);
+                        break;
+                    case SAVANNA:
+                        color = new Color(255, 255, 204);
+                        break;
+                    case MOUNTAIN:
+                        color = new Color(204, 102, 0);
+                        break;
+                    default:
+                        color = Color.white;
+                }
+                residence.setBackground(color);
             }
         }
     }

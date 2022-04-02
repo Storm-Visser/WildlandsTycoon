@@ -65,14 +65,14 @@ public class AnimalUI  extends JFrame implements ActionListener {
             this.gridLayout = new GridLayout(8, 2);
             this.setLayout(this.gridLayout);
 
-            this.add(new JLabel("Animal:"));
+            this.add(new JLabel("Animal:", SwingConstants.CENTER));
             this.add(new JLabel(animal.getSpecies().getName()));
 
-            this.add(new JLabel("Appeal:"));
+            this.add(new JLabel("Appeal:", SwingConstants.CENTER));
             this.appealValue = new JLabel(String.valueOf(animal.getAppeal()));
             this.add(this.appealValue);
 
-            this.add(new JLabel("Is Sleeping?:"));
+            this.add(new JLabel("Is Sleeping?:", SwingConstants.CENTER));
             if (animal.getState().isSleeping()){
                 this.sleepingValue = new JLabel("Yes, Zzz");
             } else {
@@ -80,22 +80,23 @@ public class AnimalUI  extends JFrame implements ActionListener {
             }
             this.add(this.sleepingValue);
 
-            this.add(new JLabel("Stress:"));
+            this.add(new JLabel("Stress:", SwingConstants.CENTER));
             this.stressValue = new JLabel(String.valueOf(animal.getState().getStress()));
             this.add(this.stressValue);
 
-            this.add(new JLabel("Fatigue:"));
+            this.add(new JLabel("Fatigue:", SwingConstants.CENTER));
             this.fatigueValue = new JLabel(String.valueOf(animal.getState().getFatigue()));
             this.add(this.fatigueValue);
 
-            this.add(new JLabel("Hunger:"));
+            this.add(new JLabel("Hunger:", SwingConstants.CENTER));
             this.hungerValue = new JLabel(String.valueOf(animal.getState().getHunger()));
             this.add(this.hungerValue);
 
-            this.add(new JLabel("Temp Contentment:"));
+            this.add(new JLabel("Temp Contentment:", SwingConstants.CENTER));
             this.tempContentmentValue = new JLabel(String.valueOf(animal.getState().getTemperatureContentment()));
             this.add(this.tempContentmentValue);
 
+            this.add(new JLabel("Feed the Animal:", SwingConstants.CENTER));
             feedBtn = new JButton("Feed");
             feedBtn.addActionListener(this);
             this.add(feedBtn);
@@ -154,25 +155,25 @@ public class AnimalUI  extends JFrame implements ActionListener {
         Color color;
         switch (this.animal.getHabitat()){
             case JUNGLE:
-                color = Color.green;
+                color = new Color(51,102,0);
                 break;
             case AQUATIC:
-                color = Color.blue;
+                color = new Color(0,153,153);
                 break;
             case ARCTIC:
-                color = Color.lightGray;
+                color = new Color(0,204,204);
                 break;
             case SAVANNA:
-                color = Color.orange;
+                color = new Color(255,255,204);
                 break;
             case MOUNTAIN:
-                color = Color.darkGray;
+                color = new Color(204,102,0);
                 break;
             default:
                 color = Color.red;
         }
 
-        this.getRootPane().setBorder(BorderFactory.createMatteBorder(10,10,10,10, color));
+        this.getRootPane().getContentPane().setBackground(color);
     }
 
 

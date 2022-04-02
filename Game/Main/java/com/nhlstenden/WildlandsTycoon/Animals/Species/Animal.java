@@ -133,7 +133,7 @@ public abstract class Animal {
         if (amountOfGuests > 1000 && !state.isSleeping()) {
             this.state.setStress(this.state.getStress() + ((amountOfGuests - 1000d) / 1000d));
         }
-        else if(this.state.getHunger() > 50 && !state.isSleeping())
+        if(this.state.getHunger() > 50 && !state.isSleeping())
         {
             this.state.setStress(this.state.getStress() + this.state.getHunger() / 100);
         }

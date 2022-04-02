@@ -81,7 +81,7 @@ public class GameUI extends JFrame implements ActionListener {
         this.entranceMenu.add(this.changePriceItem);
         this.entranceMenu.add(this.showFinancesItem);
         //menu
-        this.money = new JMenuItem("€" + controller.getZoo().getMoney() + ",-");
+        this.money = new JMenuItem("€" + controller.getZoo().getEntrance().getMoney() + ",-");
         //menu
         this.time = new JMenuItem(controller.getZoo().getZooState().getTime().toString());
         this.temperature = new JMenuItem(String.valueOf(controller.getZoo().getZooState().getTemperature()));
@@ -139,7 +139,7 @@ public class GameUI extends JFrame implements ActionListener {
             residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getSpecies().getName());
             residenceButton.setAnimal(controller.getZoo().getResidence(i).getAnimal());
         }
-        this.money.setText("€" + this.controller.getZoo().getMoney() + ",-");
+        this.money.setText("€" + this.controller.getZoo().getEntrance().getMoney() + ",-");
         this.time.setText(this.controller.getZoo().getZooState().getTime().toString());
         this.temperature.setText(String.valueOf(this.controller.getZoo().getZooState().getTemperature()));
         if (this.activeAnimalUI != null){

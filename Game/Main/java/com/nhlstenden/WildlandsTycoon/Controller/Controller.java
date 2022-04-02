@@ -50,7 +50,7 @@ public class Controller {
     }
 
     public void takeSnapshot(){
-        caretaker.addMemento(new ZooMemento(zoo.getMoney(), zoo.getZooState().getTime()));
+        caretaker.addMemento(new ZooMemento(zoo.getEntrance().getMoney(), zoo.getZooState().getTime()));
     }
 
     public ArrayList<ZooMemento> getMementoList(){

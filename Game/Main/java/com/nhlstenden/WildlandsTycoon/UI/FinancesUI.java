@@ -14,6 +14,7 @@ public class FinancesUI  extends JFrame implements ActionListener {
     private GridLayout gridLayout;
 
     public FinancesUI(Controller controller) throws HeadlessException {
+        //ToDO add the memento's
         super("Finances");
         this.controller = controller;
         this.initialize();

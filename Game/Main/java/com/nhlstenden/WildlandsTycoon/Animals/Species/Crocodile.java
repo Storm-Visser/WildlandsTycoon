@@ -18,20 +18,8 @@ public class Crocodile extends Animal{
     }
 
     @Override
-    public void feed() {
+    public int feed() {
         this.state.setHunger(0);
-        System.out.println("Fed Flamingo");
-    }
-
-    @Override
-    public void wakeUp() {
-        this.state.setSleeping(false);
-        System.out.println("Flamingo woke up");
-    }
-
-    @Override
-    public void sleep() {
-        this.state.setSleeping(true);
-        System.out.println("Flamingo fell asleep");
+        return 50;
     }
 }

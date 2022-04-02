@@ -62,7 +62,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
                 }
             });
 
-            this.gridLayout = new GridLayout(7, 2);
+            this.gridLayout = new GridLayout(8, 2);
             this.setLayout(this.gridLayout);
 
             this.add(new JLabel("Animal:"));
@@ -146,7 +146,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
             this.dispose();
         }
         else if(command == "Feed"){
-            this.animal.feed();
+            this.controller.getZoo().getEntrance().removeMoney(this.animal.feed());
         }
     }
 

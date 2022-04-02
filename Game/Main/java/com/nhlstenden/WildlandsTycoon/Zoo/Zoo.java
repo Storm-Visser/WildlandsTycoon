@@ -99,6 +99,7 @@ public class Zoo {
     }
 
     public void update(){
+        this.payBaseCosts();
         updateState();
         notifyAnimals();
         this.entrance.update(this);
@@ -115,10 +116,12 @@ public class Zoo {
     }
 
     private void payBaseCosts(){
-        for (Residence recidence: this.residences) {
-            if (!recidence.getAnimal().getSpecies().equals(AnimalSpecies.NULL_ANIMAL)){
-                this.entrance.removeMoney(5);
+        int amountOfResidences = 0;
+        for (Residence residence: this.residences) {
+            if (!residence.getAnimal().getSpecies().equals(AnimalSpecies.NULL_ANIMAL)){
+                amountOfResidences += 1;
             }
         }
+        this.entrance.removeMoney(5 * amountOfResidences);
     }
 }

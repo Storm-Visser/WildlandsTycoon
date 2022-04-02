@@ -22,19 +22,12 @@ public class NullAnimal extends Animal{
     }
 
     @Override
-    public void update(Double temperature, int AmountOfGuests) {
-
+    public void update(double temperature, int AmountOfGuests) {
+        //Do nothing
     }
 
     @Override
-    public void feed() {
-    }
-
-    @Override
-    public void wakeUp() {
-    }
-
-    @Override
-    public void sleep() {
+    public int feed() {
+        return 0;
     }
 }

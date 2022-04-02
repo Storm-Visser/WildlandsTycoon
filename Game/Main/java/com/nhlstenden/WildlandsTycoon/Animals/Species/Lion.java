@@ -17,21 +17,10 @@ public class Lion extends Animal{
         this.state = new State();
     }
 
-    @Override
-    public void feed() {
+    @Override 
+    public int feed(){
         this.state.setHunger(0);
-        System.out.println("Fed Flamingo");
+        return 50;
     }
 
-    @Override
-    public void wakeUp() {
-        this.state.setSleeping(false);
-        System.out.println("Flamingo woke up");
-    }
-
-    @Override
-    public void sleep() {
-        this.state.setSleeping(true);
-        System.out.println("Flamingo fell asleep");
-    }
 }

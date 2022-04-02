@@ -22,7 +22,13 @@ public class State {
     }
 
     public void setFatigue(double fatigue) {
-        this.fatigue = fatigue;
+        if (fatigue < 0){
+            this.fatigue = 0;
+        } else if (fatigue > 100) {
+            this.fatigue = 100;
+        } else {
+            this.fatigue = fatigue;
+        }
     }
 
     public boolean isSleeping() {
@@ -38,10 +44,12 @@ public class State {
     }
 
     public void setHunger(double hunger) {
-        if (hunger > 0){
-            this.hunger = hunger;
-        } else {
+        if (hunger < 0){
             this.hunger = 0;
+        } else if (hunger > 100) {
+            this.hunger = 100;
+        } else {
+            this.hunger = hunger;
         }
     }
 
@@ -50,10 +58,12 @@ public class State {
     }
 
     public void setTemperatureContentment(double temperatureContentment) {
-        if (temperatureContentment > 0){
-            this.temperatureContentment = temperatureContentment;
-        } else {
+        if (temperatureContentment < 0){
             this.temperatureContentment = 0;
+        } else if (temperatureContentment > 100) {
+            this.temperatureContentment = 100;
+        } else {
+            this.temperatureContentment = temperatureContentment;
         }
     }
 
@@ -62,10 +72,12 @@ public class State {
     }
 
     public void setStress(double stress) {
-        if (stress > 0){
-            this.stress = stress;
-        } else {
+        if (stress < 0){
             this.stress = 0;
+        } else if (stress > 100) {
+            this.stress = 100;
+        } else {
+            this.stress = stress;
         }
     }
 }

@@ -25,7 +25,7 @@ public class GameUI extends JFrame implements ActionListener {
     private JMenuItem money;
     private JMenuItem time;
     private JMenuItem temperature;
-
+    private JMenuItem amountOfGuests;
 
     private ArrayList<ResidenceButton> residenceButtons;
 
@@ -85,13 +85,15 @@ public class GameUI extends JFrame implements ActionListener {
         this.money = new JMenuItem("€" + controller.getZoo().getEntrance().getMoney() + ",-");
         //menu
         this.time = new JMenuItem(controller.getZoo().getZooState().getTime().toString());
-        this.temperature = new JMenuItem(String.valueOf(controller.getZoo().getZooState().getTemperature()));
+        this.temperature = new JMenuItem(controller.getZoo().getZooState().getTemperature() + "°C");
+        this.amountOfGuests = new JMenuItem(controller.getZoo().getEntrance().getAmountOfGuests() + " Guests");
         //add menu to menubar
         this.menuBar.add(entranceMenu);
         menuBar.add(Box.createHorizontalGlue());
         this.menuBar.add(this.money);
-        this.menuBar.add(this.time);
+        this.menuBar.add(this.amountOfGuests);
         this.menuBar.add(this.temperature);
+        this.menuBar.add(this.time);
         return this.menuBar;
     }
 
@@ -121,7 +123,6 @@ public class GameUI extends JFrame implements ActionListener {
     }
 
     private void createAnimalUI(Animal animal, int id){
-        //ToDo Foto/graphics voor de animals
         this.activeAnimalUI = new AnimalUI(this.controller, animal, id, this);
     }
 
@@ -143,7 +144,8 @@ public class GameUI extends JFrame implements ActionListener {
         }
         this.money.setText("€" + this.controller.getZoo().getEntrance().getMoney() + ",-");
         this.time.setText(this.controller.getZoo().getZooState().getTime().toString());
-        this.temperature.setText(String.valueOf(this.controller.getZoo().getZooState().getTemperature()));
+        this.temperature.setText(this.controller.getZoo().getZooState().getTemperature() + "°C");
+        this.amountOfGuests.setText(controller.getZoo().getEntrance().getAmountOfGuests() + " Guests");
         if (this.activeAnimalUI != null){
             this.activeAnimalUI.update();
         }

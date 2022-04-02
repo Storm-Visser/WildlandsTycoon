@@ -11,7 +11,7 @@ public class ZooState {
     private LocalTime time;
 
     public ZooState() {
-        temperature = 50;
+        temperature = 20;
         time = LocalTime.of(5,30);
     }
 

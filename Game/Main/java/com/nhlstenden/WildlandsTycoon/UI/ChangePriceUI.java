@@ -16,13 +16,14 @@ public class ChangePriceUI extends JFrame implements ActionListener{
     private JSpinner priceSpinner;
 
     public ChangePriceUI(Controller controller){
+        //ToDo add openingTime and closingTime options?
         super("Price menu");
         this.controller = controller;
         this.initialize();
     }
 
     private void initialize(){
-        this.setSize(120, 200);
+        this.setSize(250, 200);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.gridLayout = new GridLayout(5, 1);

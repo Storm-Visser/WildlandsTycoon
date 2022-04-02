@@ -161,4 +161,9 @@ public class GameUI extends JFrame implements ActionListener {
             }
         }
     }
+
+    public void gameOver(){
+        new GameOverUI(controller);
+        this.dispose();
+    }
 }

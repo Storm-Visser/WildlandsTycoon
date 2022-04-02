@@ -47,6 +47,10 @@ public class Controller {
             //ToDo means the day passed, do the memento things
         }
         this.gameUI.updateUI();
+        if (this.zoo.getEntrance().getMoney() < 0){
+            this.gameUI.gameOver();
+            this.timer.cancel();
+        }
     }
 
     public void takeSnapshot(){

@@ -23,7 +23,7 @@ public class Entrance {
         this.ticketPrice = ticketPrice;
         this.amountOfGuests = 0;
         this.totalGuestsToday = 0;
-        this.money = 5000;
+        this.money = 500000;
         arrivedGuests = new LinkedList<>();
     }
 

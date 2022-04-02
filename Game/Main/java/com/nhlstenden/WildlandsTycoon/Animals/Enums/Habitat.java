@@ -1,4 +1,4 @@
-package com.nhlstenden.WildlandsTycoon.Animals;
+package com.nhlstenden.WildlandsTycoon.Animals.Enums;
 
 public enum Habitat {
     ARCTIC,

@@ -1,6 +1,6 @@
 package com.nhlstenden.WildlandsTycoon.Animals.Species;
 
-import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.*;
 import com.nhlstenden.WildlandsTycoon.Animals.State;
 
 public class Lion extends Animal{
@@ -13,6 +13,7 @@ public class Lion extends Animal{
         this.minTemperature = 10.0;
 
         this.habitat = Habitat.SAVANNA;
+        this.species = AnimalSpecies.LION;
         this.state = new State();
     }
 

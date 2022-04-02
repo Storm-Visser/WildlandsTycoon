@@ -1,6 +1,7 @@
 package com.nhlstenden.WildlandsTycoon.Animals.Species;
 
-import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.AnimalSpecies;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.Habitat;
 import com.nhlstenden.WildlandsTycoon.Animals.State;
 
 public abstract class Animal {
@@ -13,8 +14,13 @@ public abstract class Animal {
 
     protected Habitat habitat;
     protected State state;
+    protected AnimalSpecies species;
 
     //changes in factory per animal
+    public AnimalSpecies getSpecies() {
+        return species;
+    }
+
     public Double getDailyHoursOfSleep() {
         return dailyHoursOfSleep;
     }

@@ -1,6 +1,6 @@
 package com.nhlstenden.WildlandsTycoon.Animals.Species;
 
-import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.*;
 import com.nhlstenden.WildlandsTycoon.Animals.State;
 
 public class Flamingo extends Animal{
@@ -13,6 +13,7 @@ public class Flamingo extends Animal{
         this.minTemperature = 10.0;
 
         this.habitat = Habitat.AQUATIC;
+        this.species = AnimalSpecies.FLAMINGO;
         this.state = new State();
     }
 

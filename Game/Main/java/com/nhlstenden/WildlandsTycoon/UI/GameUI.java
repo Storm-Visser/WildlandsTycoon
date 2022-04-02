@@ -124,7 +124,7 @@ public class GameUI extends JFrame implements ActionListener {
     private void addResidences(){
         for (int i = 1; i <= controller.getZoo().getGrid().getWidth() * controller.getZoo().getGrid().getHeight(); i++){
             ResidenceButton residenceButton = new ResidenceButton(i, controller.getZoo().getResidence(i).getAnimal());
-            residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getClass().getSimpleName());
+            residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getSpecies().getName());
             residenceButton.addActionListener(this);
             this.residenceButtons.add(residenceButton);
             this.add(residenceButton);
@@ -134,7 +134,7 @@ public class GameUI extends JFrame implements ActionListener {
     public void updateUI(){
         for (int i = 1; i <= residenceButtons.size(); i++) {
             ResidenceButton residenceButton = residenceButtons.get(i - 1);
-            residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getClass().getSimpleName());
+            residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getSpecies().getName());
             residenceButton.setAnimal(controller.getZoo().getResidence(i).getAnimal());
         }
         this.money.setText("€" + this.controller.getZoo().getMoney() + ",-");

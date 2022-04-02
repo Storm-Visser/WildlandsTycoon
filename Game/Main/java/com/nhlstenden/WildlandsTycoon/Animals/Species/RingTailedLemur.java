@@ -1,6 +1,6 @@
 package com.nhlstenden.WildlandsTycoon.Animals.Species;
 
-import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.*;
 import com.nhlstenden.WildlandsTycoon.Animals.State;
 
 public class RingTailedLemur extends Animal{
@@ -13,6 +13,7 @@ public class RingTailedLemur extends Animal{
         this.minTemperature = 10.0;
 
         this.habitat = Habitat.JUNGLE;
+        this.species = AnimalSpecies.RING_TAILED_LEMUR;
         this.state = new State();
     }
 

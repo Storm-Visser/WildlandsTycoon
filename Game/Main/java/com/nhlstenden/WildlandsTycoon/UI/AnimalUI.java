@@ -1,5 +1,7 @@
 package com.nhlstenden.WildlandsTycoon.UI;
 
+import com.nhlstenden.WildlandsTycoon.Animals.Creators.AnimalCreator;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.AnimalSpecies;
 import com.nhlstenden.WildlandsTycoon.Animals.Species.Animal;
 import com.nhlstenden.WildlandsTycoon.Animals.Species.NullAnimal;
 import com.nhlstenden.WildlandsTycoon.Controller.Controller;
@@ -61,7 +63,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
             this.setLayout(this.gridLayout);
 
             this.add(new JLabel("Animal:"));
-            this.add(new JLabel(animal.getClass().getSimpleName()));
+            this.add(new JLabel(animal.getSpecies().getName()));
 
             this.add(new JLabel("Appeal:"));
             this.appealValue = new JLabel(String.valueOf(animal.getAppeal()));
@@ -127,7 +129,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command == "Add"){
-            String selected = (String) comboBox.getItemAt(comboBox.getSelectedIndex());
+            AnimalSpecies selected = (AnimalSpecies) comboBox.getItemAt(comboBox.getSelectedIndex());
             this.controller.getZoo().getResidence(recidenceId).addAnimal(selected);
             parentGameUI.updateUI();
             closingProcedure();
@@ -135,9 +137,10 @@ public class AnimalUI  extends JFrame implements ActionListener {
         }
     }
 
-    private JComboBox<String> createComboBox(){
-        String[] options = {"Chimpanzee", "Crocodile", "Flamingo", "Gorilla", "Hippo", "Lion", "Parrot", "Penguin", "Ring tailed Lemur", "Snow Leopard", "Tiger", "Tortoise"};
-        JComboBox<String> comboBox = new JComboBox<>(options);
+    private JComboBox<AnimalSpecies> createComboBox(){
+        AnimalSpecies[] options = {AnimalSpecies.CHIMPANZEE, AnimalSpecies.CROCODILE, AnimalSpecies.FLAMINGO, AnimalSpecies.GORILLA, AnimalSpecies.HIPPO, AnimalSpecies.LION,
+                AnimalSpecies.PARROT, AnimalSpecies.PENGUIN, AnimalSpecies.RING_TAILED_LEMUR, AnimalSpecies.SNOW_LEOPARD, AnimalSpecies.TIGER, AnimalSpecies.TORTOISE};
+        JComboBox<AnimalSpecies> comboBox = new JComboBox<>(options);
         //style if necessary
         return comboBox;
     }

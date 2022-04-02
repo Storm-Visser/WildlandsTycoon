@@ -1,6 +1,6 @@
 package com.nhlstenden.WildlandsTycoon.Animals.Species;
 
-import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.*;
 import com.nhlstenden.WildlandsTycoon.Animals.State;
 
 public class Chimpanzee extends Animal{
@@ -13,6 +13,7 @@ public class Chimpanzee extends Animal{
         this.minTemperature = 10.0;
 
         this.habitat = Habitat.JUNGLE;
+        this.species = AnimalSpecies.CHIMPANZEE;
         this.state = new State();
     }
 

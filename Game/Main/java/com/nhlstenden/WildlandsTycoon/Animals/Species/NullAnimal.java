@@ -1,6 +1,6 @@
 package com.nhlstenden.WildlandsTycoon.Animals.Species;
 
-import com.nhlstenden.WildlandsTycoon.Animals.Habitat;
+import com.nhlstenden.WildlandsTycoon.Animals.Enums.AnimalSpecies;
 import com.nhlstenden.WildlandsTycoon.Animals.State;
 
 public class NullAnimal extends Animal{
@@ -13,6 +13,7 @@ public class NullAnimal extends Animal{
         this.minTemperature = 0.0;
 
         this.habitat = null;
+        this.species = AnimalSpecies.NULL_ANIMAL;
         this.state = new State();
     }
     @Override

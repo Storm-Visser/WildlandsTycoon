@@ -107,6 +107,7 @@ public class GameUI extends JFrame implements ActionListener {
             default:
                 ResidenceButton src = (ResidenceButton) e.getSource();
                 this.createAnimalUI(src.getAnimal(), src.getId());
+                System.out.println("dadsa");
         }
     }
 

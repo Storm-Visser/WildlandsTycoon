@@ -43,8 +43,7 @@ public class Controller {
         if (zoo.getZooState().getTime().equals(LocalTime.of(0,0))){
             System.out.println("Day passed");
             takeSnapshot();
-            System.out.println(getMementoList().get(getMementoList().size() - 1).getMemento());
-            //ToDo means the day passed, do the memento things
+            System.out.println(getMementoList().get(getMementoList().size() - 1).getMemento()); // TODO Put in list instead of console line
         }
         this.gameUI.updateUI();
     }

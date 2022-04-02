@@ -119,9 +119,9 @@ public abstract class Animal {
             this.sleep();
         }
         //ToDo niet automatisch eten geven
-        if (this.state.getHunger() > 50 && !state.isSleeping()){
-            this.feed();
-        }
+//        if (this.state.getHunger() > 50 && !state.isSleeping()){
+//            this.feed();
+//        }
     }
 
     //changes in factory per animal

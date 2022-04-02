@@ -35,6 +35,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
     private JLabel fatigueValue;
     private JLabel hungerValue;
     private JLabel tempContentmentValue;
+    private JButton feedBtn;
 
     public AnimalUI(Controller controller, Animal animal, int id, GameUI gameUI) throws HeadlessException {
         super(animal.getClass().getSimpleName());
@@ -93,6 +94,10 @@ public class AnimalUI  extends JFrame implements ActionListener {
             this.tempContentmentValue = new JLabel(String.valueOf(animal.getState().getTemperatureContentment()));
             this.add(this.tempContentmentValue);
 
+            feedBtn = new JButton("Feed");
+            feedBtn.addActionListener(this);
+            this.add(feedBtn);
+
             this.setVisible(true);
         }
     }
@@ -134,6 +139,9 @@ public class AnimalUI  extends JFrame implements ActionListener {
             parentGameUI.updateUI();
             closingProcedure();
             this.dispose();
+        }
+        else if(command == "Feed"){
+            this.animal.feed();
         }
     }
 

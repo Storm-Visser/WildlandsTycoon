@@ -24,6 +24,7 @@ public class GameUI extends JFrame implements ActionListener {
 
     private JMenuItem money;
     private JMenuItem time;
+    private JMenuItem temperature;
 
 
     private ArrayList<ResidenceButton> residenceButtons;
@@ -83,12 +84,13 @@ public class GameUI extends JFrame implements ActionListener {
         this.money = new JMenuItem("€" + controller.getZoo().getMoney() + ",-");
         //menu
         this.time = new JMenuItem(controller.getZoo().getZooState().getTime().toString());
-
+        this.temperature = new JMenuItem(String.valueOf(controller.getZoo().getZooState().getTemperature()));
         //add menu to menubar
         this.menuBar.add(entranceMenu);
         menuBar.add(Box.createHorizontalGlue());
         this.menuBar.add(this.money);
         this.menuBar.add(this.time);
+        this.menuBar.add(this.temperature);
         return this.menuBar;
     }
 
@@ -139,6 +141,7 @@ public class GameUI extends JFrame implements ActionListener {
         }
         this.money.setText("€" + this.controller.getZoo().getMoney() + ",-");
         this.time.setText(this.controller.getZoo().getZooState().getTime().toString());
+        this.temperature.setText(String.valueOf(this.controller.getZoo().getZooState().getTemperature()));
         if (this.activeAnimalUI != null){
             this.activeAnimalUI.update();
         }

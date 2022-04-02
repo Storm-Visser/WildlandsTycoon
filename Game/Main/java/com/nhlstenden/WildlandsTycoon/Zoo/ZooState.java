@@ -1,16 +1,17 @@
 package com.nhlstenden.WildlandsTycoon.Zoo;
 
 import java.time.LocalTime;
+import java.util.Random;
 
 public class ZooState {
 
     //Temperature in C°
-    private double temperature;
+    private int temperature;
 
     private LocalTime time;
 
     public ZooState() {
-        temperature = 20;
+        temperature = 50;
         time = LocalTime.of(23,30);
     }
 
@@ -18,7 +19,7 @@ public class ZooState {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
 
@@ -28,7 +29,9 @@ public class ZooState {
 
     public void update(){
         updateTime();
-        updateTemperature();
+        if(this.time.getMinute() == 0){
+            updateTemperature();
+        }
     }
 
     private void updateTime(){
@@ -36,6 +39,18 @@ public class ZooState {
     }
 
     public void updateTemperature(){
-        //ToDo some algorithm to control temp according to time
+        if(time.getHour() >= 0 && time.getHour() < 6){
+            this.temperature = new Random().nextInt(15 - 10) + 10;
+        }
+        else if(time.getHour() >= 6 && time.getHour() < 13){
+            this.temperature = new Random().nextInt(19 - 13) + 13;
+        }
+        else if (time.getHour() >= 13 && time.getHour() < 18){
+            this.temperature = new Random().nextInt(23 - 19) + 19;
+        }
+        else if(time.getHour() >= 18 && time.getHour() <= 23){
+            this.temperature = new Random().nextInt(19 - 13) + 13;
+        }
+        System.out.println(this.temperature);
     }
 }

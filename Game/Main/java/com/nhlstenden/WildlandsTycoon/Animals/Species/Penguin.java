@@ -12,7 +12,7 @@ public class Penguin extends Animal{
         this.maxTemperature = 40.0;
         this.minTemperature = 10.0;
 
-        this.habitat = Habitat.AQUATIC;
+        this.habitat = Habitat.ARCTIC;
         this.state = new State();
     }
 

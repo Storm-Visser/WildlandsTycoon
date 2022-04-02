@@ -12,7 +12,7 @@ public class RingTailedLemur extends Animal{
         this.maxTemperature = 40.0;
         this.minTemperature = 10.0;
 
-        this.habitat = Habitat.AQUATIC;
+        this.habitat = Habitat.JUNGLE;
         this.state = new State();
     }
 

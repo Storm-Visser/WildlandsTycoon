@@ -87,7 +87,7 @@ public abstract class Animal {
         if (temperature < minTemperature){
             this.state.setTemperatureContentment(this.state.getTemperatureContentment() - (minTemperature - temperature * 5));
         }
-        if (temperature > maxTemperature){
+        else if (temperature > maxTemperature){
             this.state.setTemperatureContentment(this.state.getTemperatureContentment() - (temperature - maxTemperature * 5));
         }
         //update stress

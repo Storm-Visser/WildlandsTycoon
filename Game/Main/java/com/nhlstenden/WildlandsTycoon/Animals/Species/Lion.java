@@ -12,7 +12,7 @@ public class Lion extends Animal{
         this.maxTemperature = 40.0;
         this.minTemperature = 10.0;
 
-        this.habitat = Habitat.AQUATIC;
+        this.habitat = Habitat.SAVANNA;
         this.state = new State();
     }
 

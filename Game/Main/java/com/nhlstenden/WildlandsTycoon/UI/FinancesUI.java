@@ -63,6 +63,7 @@ public class FinancesUI  extends JFrame implements ActionListener {
         this.add(thirdLabel);
         this.add(fourthLabel);
 
+        this.setResizable(false);
         this.setVisible(true);
     }
 

@@ -102,6 +102,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
             this.add(feedBtn);
 
             this.createBorder();
+            this.setResizable(false);
             this.setVisible(true);
         }
     }
@@ -132,6 +133,7 @@ public class AnimalUI  extends JFrame implements ActionListener {
         JButton addButton = new JButton("Add");
         addButton.addActionListener(this);
         this.add(addButton);
+        this.setResizable(false);
         this.setVisible(true);
     }
 

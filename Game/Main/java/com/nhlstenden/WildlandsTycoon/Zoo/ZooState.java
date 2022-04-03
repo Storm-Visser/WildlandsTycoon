@@ -12,7 +12,7 @@ public class ZooState {
 
     public ZooState() {
         temperature = 20;
-        time = LocalTime.of(5,30);
+        time = LocalTime.of(23,30);
     }
 
     public double getTemperature() {

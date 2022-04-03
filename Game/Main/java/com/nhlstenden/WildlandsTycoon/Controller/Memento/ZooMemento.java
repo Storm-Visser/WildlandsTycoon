@@ -21,4 +21,16 @@ public class ZooMemento {
     public String getMemento(){
         return "Gasten vandaag: " + this.totalGuestsToday + " Amount of residences: " + this.residenceAmount + " ticket price: " + this.ticketPrice;
     }
+
+    public int getGuests(){
+        return this.totalGuestsToday;
+    }
+
+    public int getResidenceAmount(){
+        return this.residenceAmount;
+    }
+
+    public double getTicketPrice(){
+        return this.ticketPrice;
+    }
 }

@@ -2,6 +2,7 @@ package com.nhlstenden.WildlandsTycoon.Controller;
 
 import com.nhlstenden.WildlandsTycoon.Controller.Memento.Caretaker;
 import com.nhlstenden.WildlandsTycoon.Controller.Memento.ZooMemento;
+import com.nhlstenden.WildlandsTycoon.UI.FinancesUI;
 import com.nhlstenden.WildlandsTycoon.UI.GameUI;
 import com.nhlstenden.WildlandsTycoon.Zoo.Zoo;
 
@@ -53,7 +54,6 @@ public class Controller {
 
     public void takeSnapshot(){
         caretaker.addMemento(new ZooMemento(zoo.getEntrance().getTotalGuestsToday(), zoo.getResidenceAmount(), zoo.getEntrance().getTicketPrice()));
-        System.out.println(caretaker.getHistory().get(0).getMemento());
     }
 
     public ArrayList<ZooMemento> getMementoList(){

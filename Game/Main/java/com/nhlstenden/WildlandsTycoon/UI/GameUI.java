@@ -3,6 +3,7 @@ package com.nhlstenden.WildlandsTycoon.UI;
 import com.nhlstenden.WildlandsTycoon.Animals.Species.Animal;
 import com.nhlstenden.WildlandsTycoon.Animals.Species.NullAnimal;
 import com.nhlstenden.WildlandsTycoon.Controller.Controller;
+import com.nhlstenden.WildlandsTycoon.Controller.Memento.ZooMemento;
 import com.nhlstenden.WildlandsTycoon.Zoo.Residence;
 
 import javax.swing.*;
@@ -110,7 +111,7 @@ public class GameUI extends JFrame implements ActionListener {
                 this.createPriceWindow();
                 break;
             case "Show finances":
-                this.createFinancesWindow();
+                this.createFinancesWindow(this.controller.getMementoList());
                 break;
             default:
                 ResidenceButton src = (ResidenceButton) e.getSource();
@@ -122,8 +123,8 @@ public class GameUI extends JFrame implements ActionListener {
         new ChangePriceUI(controller);
     }
 
-    private void createFinancesWindow(){
-        new FinancesUI(controller);
+    private void createFinancesWindow(ArrayList<ZooMemento> mementos){
+        new FinancesUI(controller, mementos);
     }
 
     private void createAnimalUI(Animal animal, int id){

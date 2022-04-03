@@ -9,7 +9,7 @@ public enum AnimalSpecies {
     LION("Lion", 10000),
     NULL_ANIMAL("No animal", 0),
     PARROT("Parrot", 1000),
-    PENGUIN("Penguin", 2000),
+    PENGUIN("Penguin", 3000),
     RING_TAILED_LEMUR("Ring tailed Lemur", 2000),
     SNOW_LEOPARD("Snow leopard", 8000),
     TIGER("Tiger", 9000),

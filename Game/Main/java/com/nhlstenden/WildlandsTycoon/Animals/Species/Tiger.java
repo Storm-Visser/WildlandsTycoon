@@ -6,13 +6,13 @@ import com.nhlstenden.WildlandsTycoon.Animals.State;
 public class Tiger extends Animal{
 
     public Tiger() {
-        this.baseAppeal = 20.0;
-        this.dailyHoursOfSleep = 8.0;
+        this.baseAppeal = 90.0;
+        this.dailyHoursOfSleep = 16.0;
         //Temperature in C°
-        this.maxTemperature = 40.0;
-        this.minTemperature = 10.0;
+        this.maxTemperature = 28.0;
+        this.minTemperature = -4.0;
 
-        this.habitat = Habitat.SAVANNA;
+        this.habitat = Habitat.MOUNTAIN;
         this.species = AnimalSpecies.TIGER;
         this.state = new State();
     }
@@ -20,7 +20,7 @@ public class Tiger extends Animal{
     @Override
     public int feed() {
         this.state.setHunger(0);
-        return 50;
+        return 120;
     }
 
 }

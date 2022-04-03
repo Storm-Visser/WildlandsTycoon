@@ -7,12 +7,12 @@ public class Flamingo extends Animal{
 
     public Flamingo() {
         this.baseAppeal = 20.0;
-        this.dailyHoursOfSleep = 8.0;
+        this.dailyHoursOfSleep = 10.0;
         //Temperature in C°
         this.maxTemperature = 40.0;
-        this.minTemperature = 10.0;
+        this.minTemperature = 8.0;
 
-        this.habitat = Habitat.AQUATIC;
+        this.habitat = Habitat.SAVANNA;
         this.species = AnimalSpecies.FLAMINGO;
         this.state = new State();
     }
@@ -20,6 +20,6 @@ public class Flamingo extends Animal{
     @Override
     public int feed() {
         this.state.setHunger(0);
-        return 50;
+        return 30;
     }
 }

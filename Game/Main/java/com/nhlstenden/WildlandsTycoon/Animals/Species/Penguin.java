@@ -6,11 +6,11 @@ import com.nhlstenden.WildlandsTycoon.Animals.State;
 public class Penguin extends Animal{
 
     public Penguin() {
-        this.baseAppeal = 20.0;
-        this.dailyHoursOfSleep = 8.0;
+        this.baseAppeal = 30.0;
+        this.dailyHoursOfSleep = 16.0;
         //Temperature in C°
-        this.maxTemperature = 40.0;
-        this.minTemperature = 10.0;
+        this.maxTemperature = 32.0;
+        this.minTemperature = -60.0;
 
         this.habitat = Habitat.ARCTIC;
         this.species = AnimalSpecies.PENGUIN;

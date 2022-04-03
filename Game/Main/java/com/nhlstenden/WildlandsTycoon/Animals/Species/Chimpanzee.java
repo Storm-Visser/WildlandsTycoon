@@ -6,11 +6,11 @@ import com.nhlstenden.WildlandsTycoon.Animals.State;
 public class Chimpanzee extends Animal{
 
     public Chimpanzee() {
-        this.baseAppeal = 20.0;
-        this.dailyHoursOfSleep = 8.0;
+        this.baseAppeal = 40.0;
+        this.dailyHoursOfSleep = 10.0;
         //Temperature in C°
-        this.maxTemperature = 40.0;
-        this.minTemperature = 10.0;
+        this.maxTemperature = 42.0;
+        this.minTemperature = 8.0;
 
         this.habitat = Habitat.JUNGLE;
         this.species = AnimalSpecies.CHIMPANZEE;
@@ -20,6 +20,6 @@ public class Chimpanzee extends Animal{
     @Override
     public int feed() {
         this.state.setHunger(0);
-        return 50;
+        return 80;
     }
 }

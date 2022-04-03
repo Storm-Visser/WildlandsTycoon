@@ -7,9 +7,9 @@ public class RingTailedLemur extends Animal{
 
     public RingTailedLemur() {
         this.baseAppeal = 20.0;
-        this.dailyHoursOfSleep = 8.0;
+        this.dailyHoursOfSleep = 16.0;
         //Temperature in C°
-        this.maxTemperature = 40.0;
+        this.maxTemperature = 42.0;
         this.minTemperature = 10.0;
 
         this.habitat = Habitat.JUNGLE;
@@ -20,7 +20,7 @@ public class RingTailedLemur extends Animal{
     @Override
     public int feed() {
         this.state.setHunger(0);
-        return 50;
+        return 40;
     }
 
 }

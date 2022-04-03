@@ -44,6 +44,7 @@ public class Controller {
         if (zoo.getZooState().getTime().equals(LocalTime.of(0,0))){
             System.out.println("Day passed");
             takeSnapshot();
+            new FinancesUI(this, getMementoList());
         }
         this.gameUI.updateUI();
         if (this.zoo.getEntrance().getMoney() < 0){

@@ -43,7 +43,6 @@ public class Controller {
         if (zoo.getZooState().getTime().equals(LocalTime.of(0,0))){
             System.out.println("Day passed");
             takeSnapshot();
-            System.out.println(getMementoList().get(getMementoList().size() - 1).getMemento()); // TODO Put in list instead of console line
         }
         this.gameUI.updateUI();
         if (this.zoo.getEntrance().getMoney() < 0){
@@ -53,7 +52,8 @@ public class Controller {
     }
 
     public void takeSnapshot(){
-        caretaker.addMemento(new ZooMemento(zoo.getEntrance().getMoney(), zoo.getZooState().getTime()));
+        caretaker.addMemento(new ZooMemento(zoo.getEntrance().getTotalGuestsToday(), zoo.getResidenceAmount(), zoo.getEntrance().getTicketPrice()));
+        System.out.println(caretaker.getHistory().get(0).getMemento());
     }
 
     public ArrayList<ZooMemento> getMementoList(){

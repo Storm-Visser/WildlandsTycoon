@@ -2,7 +2,6 @@ package com.nhlstenden.WildlandsTycoon.Zoo;
 
 import com.nhlstenden.WildlandsTycoon.Animals.Enums.AnimalSpecies;
 
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -31,6 +30,16 @@ public class Zoo {
         for (int i = 0; i < this.grid.getWidth() * this.grid.getHeight(); i++){
             this.addResidence(new Residence(i + 1));
         }
+    }
+
+    public int getResidenceAmount(){
+        int amount = 0;
+        for(Residence r: residences){
+            if(r.getAnimal().getSpecies() != AnimalSpecies.NULL_ANIMAL){
+                amount++;
+            }
+        }
+        return amount;
     }
 
     public String getName() {

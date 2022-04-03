@@ -8,16 +8,17 @@ import java.util.ArrayList;
 
 public class ZooMemento {
 
-    private int money;
-    private LocalTime time;
-    // TODO Andere dingen ipv hiervan
+    private int totalGuestsToday;
+    private int residenceAmount;
+    private double ticketPrice;
 
-    public ZooMemento(int money, LocalTime time){
-        this.money = money;
-        this.time = time;
+    public ZooMemento(int totalGuestsToday, int residenceAmount, double ticketPrice){
+        this.totalGuestsToday = totalGuestsToday;
+        this.residenceAmount = residenceAmount;
+        this.ticketPrice = ticketPrice;
     }
 
     public String getMemento(){
-        return "Geld: " + this.money + "  Tijd: " + time;
+        return "Gasten vandaag: " + this.totalGuestsToday + " Amount of residences: " + this.residenceAmount + " ticket price: " + this.ticketPrice;
     }
 }

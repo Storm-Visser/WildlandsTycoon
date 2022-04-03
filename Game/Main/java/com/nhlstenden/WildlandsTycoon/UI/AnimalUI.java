@@ -37,6 +37,14 @@ public class AnimalUI  extends JFrame implements ActionListener {
     private JLabel tempContentmentValue;
     private JButton feedBtn;
 
+    /***
+     * Constructor of AnimalUI.
+     * @param controller
+     * @param animal
+     * @param id
+     * @param gameUI
+     * @throws HeadlessException
+     */
     public AnimalUI(Controller controller, Animal animal, int id, GameUI gameUI) throws HeadlessException {
         super(animal.getClass().getSimpleName());
         this.controller = controller;
@@ -46,6 +54,9 @@ public class AnimalUI  extends JFrame implements ActionListener {
         this.initialize();
     }
 
+    /***
+     * Initializes UI elements
+     */
     private void initialize(){
         if (this.animal.getClass().equals(NullAnimal.class)) {
             this.isRealAnimal = false;
@@ -106,13 +117,18 @@ public class AnimalUI  extends JFrame implements ActionListener {
         }
     }
 
+    /***
+     * Closes zoo
+     */
     private void closingProcedure(){
         this.parentGameUI.removeActiveAnimalUI();
         System.out.println("closing animalUI");
         this.dispose();
     }
 
-
+    /***
+     * Initializes null animal
+     */
     private void initializeNullAnimal(){
         this.setSize(300, 200);
         this.setLocationRelativeTo(null);
@@ -135,6 +151,10 @@ public class AnimalUI  extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    /***
+     * Controls what action is performed when button is pressed
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
@@ -151,6 +171,9 @@ public class AnimalUI  extends JFrame implements ActionListener {
         }
     }
 
+    /***
+     * Creates color of border
+     */
     private void createBorder(){
         Color color;
         switch (this.animal.getHabitat()){
@@ -176,7 +199,10 @@ public class AnimalUI  extends JFrame implements ActionListener {
         this.getRootPane().getContentPane().setBackground(color);
     }
 
-
+    /***
+     * Creates drop down menu
+     * @return
+     */
     private JComboBox<AnimalSpecies> createComboBox(){
         AnimalSpecies[] options = {AnimalSpecies.CHIMPANZEE, AnimalSpecies.CROCODILE, AnimalSpecies.FLAMINGO, AnimalSpecies.GORILLA, AnimalSpecies.HIPPO, AnimalSpecies.LION,
                 AnimalSpecies.PARROT, AnimalSpecies.PENGUIN, AnimalSpecies.RING_TAILED_LEMUR, AnimalSpecies.SNOW_LEOPARD, AnimalSpecies.TIGER, AnimalSpecies.TORTOISE};
@@ -185,6 +211,9 @@ public class AnimalUI  extends JFrame implements ActionListener {
         return comboBox;
     }
 
+    /***
+     * Updates UI
+     */
     public void update()
     {
         if (this.isRealAnimal) {

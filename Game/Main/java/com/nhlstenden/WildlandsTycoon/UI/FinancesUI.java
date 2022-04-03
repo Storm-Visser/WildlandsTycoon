@@ -9,11 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class FinancesUI  extends JFrame implements ActionListener {
+public class FinancesUI  extends JFrame {
 
     private Controller controller;
 
-    private GridLayout gridLayout;
     private JLabel firstLabel;
     private JLabel secondLabel;
     private JLabel thirdLabel;
@@ -28,6 +27,9 @@ public class FinancesUI  extends JFrame implements ActionListener {
         this.initialize();
     }
 
+    /***
+     * Initialization of UI
+     */
     private void initialize(){
         this.setSize(600, 200);
         this.setLocationRelativeTo(null);
@@ -64,10 +66,5 @@ public class FinancesUI  extends JFrame implements ActionListener {
         this.add(fourthLabel);
 
         this.setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
 }

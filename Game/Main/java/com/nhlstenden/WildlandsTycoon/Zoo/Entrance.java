@@ -23,8 +23,7 @@ public class Entrance {
         this.ticketPrice = ticketPrice;
         this.amountOfGuests = 0;
         this.totalGuestsToday = 0;
-        //ToDo aanpassen beginprijs
-        this.money = 500000;
+        this.money = 50000;
         arrivedGuests = new LinkedList<>();
     }
 
@@ -32,11 +31,19 @@ public class Entrance {
         return money;
     }
 
+    /***
+     * Removes money
+     * @param amount
+     */
     public void removeMoney(int amount){
         this.money -= amount;
         this.totalOutgoingMoney += amount;
     }
 
+    /***
+     * Adds money
+     * @param amount
+     */
     public void addMoney(int amount){
         this.money += amount;
         this.totalIncomingMoney += amount;

@@ -3,7 +3,7 @@ package com.nhlstenden.WildlandsTycoon.Animals;
 public class State {
 
     private boolean isSleeping;
-    //These variables will contain a rating from 0 to 100, with 0 being good and 100 bad.
+    // These variables will contain a rating from 0 to 100, with 0 being good and 100 bad.
     private double hunger;
     private double temperatureContentment;
     private double stress;
@@ -21,6 +21,10 @@ public class State {
         return fatigue;
     }
 
+    /***
+     * Sets fatique of animal
+     * @param fatigue
+     */
     public void setFatigue(double fatigue) {
         if (fatigue < 0){
             this.fatigue = 0;
@@ -43,6 +47,10 @@ public class State {
         return hunger;
     }
 
+    /**
+     * Sets hunger of animal
+     * @param hunger
+     */
     public void setHunger(double hunger) {
         if (hunger < 0){
             this.hunger = 0;
@@ -57,6 +65,10 @@ public class State {
         return temperatureContentment;
     }
 
+    /**
+     * Sets contentment of animal
+     * @param temperatureContentment
+     */
     public void setTemperatureContentment(double temperatureContentment) {
         if (temperatureContentment < 0){
             this.temperatureContentment = 0;

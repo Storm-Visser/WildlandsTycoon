@@ -5,7 +5,6 @@ import com.nhlstenden.WildlandsTycoon.Animals.Enums.Habitat;
 import com.nhlstenden.WildlandsTycoon.Animals.State;
 
 public abstract class Animal {
-    //ToDo edit child methods
     protected Double baseAppeal;
     protected Double dailyHoursOfSleep;
     //Temperature in C°

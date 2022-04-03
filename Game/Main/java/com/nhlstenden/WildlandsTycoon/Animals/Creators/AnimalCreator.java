@@ -7,6 +7,11 @@ public abstract class AnimalCreator {
 
     public abstract Animal createAnimal();
 
+    /***
+     * Creates animal object
+     * @param species
+     * @return
+     */
     public static Animal createAnimalBySpecies(AnimalSpecies species){
         switch (AnimalSpecies.valueOf(species.name())) {
             case CHIMPANZEE:

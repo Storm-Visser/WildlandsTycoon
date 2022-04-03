@@ -24,10 +24,13 @@ public class Controller {
         this.zoo = zoo;
     }
 
+    /**
+     * Initializer controller
+     * Sets timer that ticks every second
+     */
     public void initialize(){
         caretaker = new Caretaker();
         this.timer = new Timer();
-        //set een TimerTask die de update functie aanroept om de 1sec
         timer.schedule(new simpleTask(), 1000, 1000);
     }
 
@@ -39,6 +42,9 @@ public class Controller {
         return zoo;
     }
 
+    /**
+     * Updates zoo, everyday at 00:00
+     */
     public void update(){
         zoo.update();
         if (zoo.getZooState().getTime().equals(LocalTime.of(0,0))){
@@ -53,6 +59,9 @@ public class Controller {
         }
     }
 
+    /***
+     * Creates memento
+     */
     public void takeSnapshot(){
         caretaker.addMemento(new ZooMemento(zoo.getEntrance().getTotalGuestsToday(), zoo.getResidenceAmount(), zoo.getEntrance().getTicketPrice()));
     }

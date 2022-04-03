@@ -25,7 +25,10 @@ public class StartScreenUI implements ActionListener {
 
     private GridLayout gridLayout;
 
-
+    /***
+     * Launches game
+     * @param args
+     */
     public static void main(String[] args) {
         new StartScreenUI();
     }
@@ -41,6 +44,10 @@ public class StartScreenUI implements ActionListener {
     {
         SplashScreenUI splash = new SplashScreenUI();
     }
+
+    /***
+     * Creates GUI
+     */
     private void createGUI(){
         mainFrame = new JFrame("Create Zoo");
         mainFrame.setSize(800,600);
@@ -70,8 +77,10 @@ public class StartScreenUI implements ActionListener {
         mainFrame.setVisible(true);
     }
 
-
-
+    /***
+     * Controls what action is performed when button is pressed
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command.equals("Start zoo")){
@@ -83,6 +92,10 @@ public class StartScreenUI implements ActionListener {
         }
     }
 
+    /***
+     * Creates zoo
+     * @param selectedName
+     */
     public void createNewZoo(String selectedName){
         //get this from ui
         String name = selectedName;

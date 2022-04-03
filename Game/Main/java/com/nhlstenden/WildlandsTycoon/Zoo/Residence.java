@@ -32,6 +32,10 @@ public class Residence {
         this.animal = animal;
     }
 
+    /***
+     * Add animal to residence
+     * @param species
+     */
     public void addAnimal(AnimalSpecies species){
         if (this.animal.getSpecies().equals(AnimalSpecies.NULL_ANIMAL)){
             this.animal = AnimalCreator.createAnimalBySpecies(species);

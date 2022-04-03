@@ -38,6 +38,9 @@ public class ZooState {
         this.time = this.time.plusMinutes(10);
     }
 
+    /***
+     * Changes temperature of zoo every hour
+     */
     public void updateTemperature(){
         if(time.getHour() >= 0 && time.getHour() < 6){
             this.temperature = new Random().nextInt(15 - 10) + 10;

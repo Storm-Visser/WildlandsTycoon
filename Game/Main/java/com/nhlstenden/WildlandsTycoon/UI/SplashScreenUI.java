@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 public class SplashScreenUI extends JWindow {
 
-        public SplashScreenUI()
+    /***
+     * Creates splashscreen
+     */
+    public SplashScreenUI()
         {
             JWindow j=new JWindow();
 

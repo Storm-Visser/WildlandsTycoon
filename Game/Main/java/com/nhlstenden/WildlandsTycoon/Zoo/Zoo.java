@@ -26,6 +26,9 @@ public class Zoo {
         this.createResidences();
     }
 
+    /***
+     * Adds residences to zoo
+     */
     private void createResidences(){
         for (int i = 0; i < this.grid.getWidth() * this.grid.getHeight(); i++){
             this.addResidence(new Residence(i + 1));
@@ -118,12 +121,18 @@ public class Zoo {
         this.zooState.update();
     }
 
+    /***
+     * Keeps animal states updated every tick/second
+     */
     public void notifyAnimals(){
         for (Residence residence : this.residences) {
             residence.getAnimal().update(zooState.getTemperature(), entrance.getAmountOfGuests());
         }
     }
 
+    /***
+     * Guest pays cost of zoo
+     */
     private void payBaseCosts(){
         int amountOfResidences = 0;
         for (Residence residence: this.residences) {

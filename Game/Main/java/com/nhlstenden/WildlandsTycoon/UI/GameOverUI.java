@@ -20,6 +20,9 @@ public class GameOverUI extends JFrame implements ActionListener{
         initialize();
     }
 
+    /***
+     * Initialization of UI
+     */
     private void initialize(){
         this.setSize(300, 200);
         this.addWindowListener(new WindowAdapter() {
@@ -48,6 +51,10 @@ public class GameOverUI extends JFrame implements ActionListener{
 
     }
 
+    /***
+     * Controls what action is performed when button is pressed
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();

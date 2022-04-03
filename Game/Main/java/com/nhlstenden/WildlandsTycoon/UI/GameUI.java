@@ -57,6 +57,9 @@ public class GameUI extends JFrame implements ActionListener {
         return controller;
     }
 
+    /***
+     * Initialization of UI
+     */
     private void initialize(){
         this.setSize(1000, 1000);
         this.setLocationRelativeTo(null);
@@ -73,6 +76,10 @@ public class GameUI extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    /***
+     * Creates navigation bar
+     * @return
+     */
     private JMenuBar createMenu(){
         //menubar
         this.menuBar = new JMenuBar();
@@ -103,6 +110,10 @@ public class GameUI extends JFrame implements ActionListener {
         return this.menuBar;
     }
 
+    /***
+     * Controls what action is performed when button is pressed
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
@@ -131,6 +142,9 @@ public class GameUI extends JFrame implements ActionListener {
         this.activeAnimalUI = new AnimalUI(this.controller, animal, id, this);
     }
 
+    /***
+     * Creates bodies of residences
+     */
     private void addResidencesBodys()
     {
         for (int i = 1; i <= controller.getZoo().getGrid().getWidth() * controller.getZoo().getGrid().getHeight(); i++) {
@@ -141,6 +155,10 @@ public class GameUI extends JFrame implements ActionListener {
             this.add(residenceBody);
         }
     }
+
+    /***
+     * Adds new residences to body
+     */
     private void addResidences(){
         for (int i = 1; i <= residencesbodys.size(); i++){
            ResidenceBody residence = residencesbodys.get(i - 1);
@@ -153,6 +171,9 @@ public class GameUI extends JFrame implements ActionListener {
         }
     }
 
+    /***
+     * Updates UI when changes are made
+     */
     public void updateUI(){
         for (int i = 1; i <= residenceButtons.size(); i++) {
             ResidenceButton residenceButton = residenceButtons.get(i - 1);
@@ -177,6 +198,9 @@ public class GameUI extends JFrame implements ActionListener {
         changeColoursResidence();
     }
 
+    /***
+     * Changes colours based on appeal percentage
+     */
     private void changeColoursAnimal(){
         for (int i = 1; i <= residenceButtons.size(); i++) {
             if (!controller.getZoo().getResidence(i).getAnimal().getClass().equals(NullAnimal.class)) {
@@ -191,6 +215,9 @@ public class GameUI extends JFrame implements ActionListener {
         }
     }
 
+    /***
+     * Changes colours based on habitat
+     */
     private void changeColoursResidence() {
         for (int i = 1; i <= residenceButtons.size(); i++) {
             if (!controller.getZoo().getResidence(i).getAnimal().getClass().equals(NullAnimal.class)) {
@@ -221,6 +248,9 @@ public class GameUI extends JFrame implements ActionListener {
         }
     }
 
+    /***
+     * Creates game over UI
+     */
     public void gameOver(){
         new GameOverUI(controller);
         this.dispose();

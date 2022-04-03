@@ -14,9 +14,10 @@ public class FinancesUI  extends JFrame implements ActionListener {
     private Controller controller;
 
     private GridLayout gridLayout;
-    private JLabel guestsLabel;
-    private JLabel residenceLabel;
-    private JLabel priceLabel;
+    private JLabel firstLabel;
+    private JLabel secondLabel;
+    private JLabel thirdLabel;
+    private JLabel fourthLabel;
     private ArrayList<ZooMemento> mementos;
 
 
@@ -28,23 +29,39 @@ public class FinancesUI  extends JFrame implements ActionListener {
     }
 
     private void initialize(){
-        this.setSize(400, 200);
+        this.setSize(600, 200);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //show the memento's
-        this.setLayout(new GridLayout(1,3));
+        this.setLayout(new GridLayout(5,1));
 
-        this.guestsLabel = new JLabel();
-        this.residenceLabel = new JLabel();
-        this.priceLabel = new JLabel();
+        this.firstLabel = new JLabel();
+        this.secondLabel = new JLabel();
+        this.thirdLabel = new JLabel();
+        this.fourthLabel = new JLabel();
+
+        String guestsText = "Gasten vandaag: ";
+        String residenceText = " Aantal verblijven: ";
+        String priceText = " Entreeprijs: ";
+
+
         if(mementos.size() > 0){
-            this.priceLabel.setText("Gasten vandaag: " + mementos.get(mementos.size() - 1).getGuests());
-            this.residenceLabel.setText("Aantal verblijven: " + mementos.get(mementos.size() - 1).getResidenceAmount());
-            this.priceLabel.setText("Entreeprijs: " + mementos.get(mementos.size() - 1).getTicketPrice());
+            this.firstLabel.setText(guestsText +  + mementos.get(mementos.size() - 1).getGuests() + residenceText + mementos.get(mementos.size() - 1).getResidenceAmount() + priceText + mementos.get(mementos.size() - 1).getTicketPrice());
         }
-        this.add(guestsLabel);
-        this.add(residenceLabel);
-        this.add(priceLabel);
+        if(mementos.size() > 1){
+            this.secondLabel.setText(guestsText +  + mementos.get(mementos.size() - 2).getGuests() + residenceText + mementos.get(mementos.size() - 2).getResidenceAmount() + priceText + mementos.get(mementos.size() - 2).getTicketPrice());
+        }
+        if (mementos.size() > 2){
+            this.thirdLabel.setText(guestsText +  + mementos.get(mementos.size() - 3).getGuests() + residenceText + mementos.get(mementos.size() - 3).getResidenceAmount() + priceText + mementos.get(mementos.size() - 3).getTicketPrice());
+        }
+        if(mementos.size() > 3){
+            this.fourthLabel.setText(guestsText +  + mementos.get(mementos.size() - 4).getGuests() + residenceText + mementos.get(mementos.size() - 4).getResidenceAmount() + priceText + mementos.get(mementos.size() - 4).getTicketPrice());
+        }
+
+        this.add(firstLabel);
+        this.add(secondLabel);
+        this.add(thirdLabel);
+        this.add(fourthLabel);
 
         this.setVisible(true);
     }

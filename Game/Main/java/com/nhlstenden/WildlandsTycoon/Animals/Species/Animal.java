@@ -90,10 +90,10 @@ public abstract class Animal {
 
     /**
      * Bereken een straf aan de hand van een state waarde
-     * 0-25     → Geen straf
-     * 25-50    → De helft van de waarde als straf
-     * 50-75    → De gehele waarde als straf
-     * 75+      → drie keer de waarde als straf, zodat de appeal altijd 0 wordt
+     * 0-20     → Geen straf
+     * 20-60    → De helft van de waarde als straf
+     * 60-80    → De gehele waarde als straf
+     * 80+      → drie keer de waarde als straf, zodat de appeal altijd 0 wordt
      * @param stateValue de waarde van de state
      * @return de straf
      */

@@ -115,7 +115,6 @@ public class GameUI extends JFrame implements ActionListener {
             default:
                 ResidenceButton src = (ResidenceButton) e.getSource();
                 this.createAnimalUI(src.getAnimal(), src.getId());
-                System.out.println("dadsa");
         }
     }
 
@@ -158,6 +157,13 @@ public class GameUI extends JFrame implements ActionListener {
             ResidenceButton residenceButton = residenceButtons.get(i - 1);
             residenceButton.setText(controller.getZoo().getResidence(i).getAnimal().getSpecies().getName());
             residenceButton.setAnimal(controller.getZoo().getResidence(i).getAnimal());
+        }
+        if (Integer.parseInt(this.money.getText().substring(1, this.money.getText().length() - 2)) < this.controller.getZoo().getEntrance().getMoney()) {
+            this.money.setForeground(new Color(0,150, 0));
+        } else if (Integer.parseInt(this.money.getText().substring(1, this.money.getText().length() - 2)) > this.controller.getZoo().getEntrance().getMoney()) {
+            this.money.setForeground(new Color(150,0, 0));
+        } else {
+            this.money.setForeground(Color.black);
         }
         this.money.setText("€" + this.controller.getZoo().getEntrance().getMoney() + ",-");
         this.time.setText(this.controller.getZoo().getZooState().getTime().toString());

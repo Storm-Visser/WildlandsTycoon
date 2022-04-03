@@ -112,7 +112,7 @@ public class Entrance {
             if (diff > 10){
                 maxToAdd = 0;
             } else {
-                maxToAdd = (int) Math.round(maxToAdd * (diff / 10));
+                maxToAdd = (int) Math.round(maxToAdd / (diff + 1));
             }
             System.out.println("price too high");
         }
@@ -124,8 +124,14 @@ public class Entrance {
      * @param zoo De dierentuin
      */
     public void removeGuests(Zoo zoo){
-        if (zoo.getZooState().getTime().isAfter(LocalTime.of(this.openingTime.getHour() - 4, 0)) && this.arrivedGuests.size() > 24){
-            this.amountOfGuests -= this.arrivedGuests.remove();
+        if (this.arrivedGuests.size() > 0){
+            if (zoo.getZooState().getTime().isAfter(LocalTime.of(this.openingTime.getHour() + 4, 0))){
+                if (zoo.getZooState().getTime().isAfter(LocalTime.of(this.closingTime.getHour() - 4, 0))){
+                    this.amountOfGuests -= this.arrivedGuests.remove();
+                } else if(this.arrivedGuests.size() > 24) {
+                    this.amountOfGuests -= this.arrivedGuests.remove();
+                }
+            }
         }
     }
 }

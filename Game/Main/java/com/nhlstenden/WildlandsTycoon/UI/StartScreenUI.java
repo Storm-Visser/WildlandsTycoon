@@ -72,8 +72,9 @@ public class StartScreenUI implements ActionListener {
         doneButton.addActionListener(this);
         doneButton.setBounds(250, 300, 300, 40);
         mainFrame.add(doneButton);
-        
 
+
+        mainFrame.setResizable(false);
         mainFrame.setVisible(true);
     }
 

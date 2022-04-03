@@ -38,6 +38,7 @@ public class ChangePriceUI extends JFrame implements ActionListener{
         JButton button = new JButton("Change price");
         button.addActionListener(this);
         this.add(button);
+        this.setResizable(false);
         this.setVisible(true);
     }
 

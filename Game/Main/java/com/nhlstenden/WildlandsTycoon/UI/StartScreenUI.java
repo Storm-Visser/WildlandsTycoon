@@ -85,7 +85,6 @@ public class StartScreenUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         if (command.equals("Start zoo")){
-            System.out.println("Creating zoo");
             String selected = textField.getText();
             createNewZoo(selected);
             new GameUI(controller);

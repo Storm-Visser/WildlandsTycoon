@@ -123,7 +123,6 @@ public class AnimalUI  extends JFrame implements ActionListener {
      */
     private void closingProcedure(){
         this.parentGameUI.removeActiveAnimalUI();
-        System.out.println("closing animalUI");
         this.dispose();
     }
 
